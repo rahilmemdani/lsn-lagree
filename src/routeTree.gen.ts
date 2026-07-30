@@ -10,11 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FranchiseRouteImport } from './routes/franchise'
 import { Route as ClassesIndexRouteImport } from './routes/classes/index'
 import { Route as ClassesFirstClassRouteImport } from './routes/classes/first-class'
 import { Route as ClassesPricingRouteImport } from './routes/classes/pricing'
 import { Route as ClassesScheduleRouteImport } from './routes/classes/schedule'
+import { Route as CommunityEventsRouteImport } from './routes/community/events'
+import { Route as CommunityJournalRouteImport } from './routes/community/journal'
+import { Route as CommunityNewsletterRouteImport } from './routes/community/newsletter'
 import { Route as StudioIndexRouteImport } from './routes/studio/index'
 import { Route as StudioCareersRouteImport } from './routes/studio/careers'
 import { Route as StudioFoundersRouteImport } from './routes/studio/founders'
@@ -28,9 +33,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FranchiseRoute = FranchiseRouteImport.update({
+  id: '/franchise',
+  path: '/franchise',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClassesIndexRoute = ClassesIndexRouteImport.update({
@@ -51,6 +66,21 @@ const ClassesPricingRoute = ClassesPricingRouteImport.update({
 const ClassesScheduleRoute = ClassesScheduleRouteImport.update({
   id: '/classes/schedule',
   path: '/classes/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityEventsRoute = CommunityEventsRouteImport.update({
+  id: '/community/events',
+  path: '/community/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityJournalRoute = CommunityJournalRouteImport.update({
+  id: '/community/journal',
+  path: '/community/journal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityNewsletterRoute = CommunityNewsletterRouteImport.update({
+  id: '/community/newsletter',
+  path: '/community/newsletter',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudioIndexRoute = StudioIndexRouteImport.update({
@@ -92,10 +122,15 @@ const TheMethodTheMicroProRoute = TheMethodTheMicroProRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/franchise': typeof FranchiseRoute
   '/classes/first-class': typeof ClassesFirstClassRoute
   '/classes/pricing': typeof ClassesPricingRoute
   '/classes/schedule': typeof ClassesScheduleRoute
+  '/community/events': typeof CommunityEventsRoute
+  '/community/journal': typeof CommunityJournalRoute
+  '/community/newsletter': typeof CommunityNewsletterRoute
   '/studio/careers': typeof StudioCareersRoute
   '/studio/founders': typeof StudioFoundersRoute
   '/studio/the-space': typeof StudioTheSpaceRoute
@@ -107,10 +142,15 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/franchise': typeof FranchiseRoute
   '/classes/first-class': typeof ClassesFirstClassRoute
   '/classes/pricing': typeof ClassesPricingRoute
   '/classes/schedule': typeof ClassesScheduleRoute
+  '/community/events': typeof CommunityEventsRoute
+  '/community/journal': typeof CommunityJournalRoute
+  '/community/newsletter': typeof CommunityNewsletterRoute
   '/studio/careers': typeof StudioCareersRoute
   '/studio/founders': typeof StudioFoundersRoute
   '/studio/the-space': typeof StudioTheSpaceRoute
@@ -123,10 +163,15 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/franchise': typeof FranchiseRoute
   '/classes/first-class': typeof ClassesFirstClassRoute
   '/classes/pricing': typeof ClassesPricingRoute
   '/classes/schedule': typeof ClassesScheduleRoute
+  '/community/events': typeof CommunityEventsRoute
+  '/community/journal': typeof CommunityJournalRoute
+  '/community/newsletter': typeof CommunityNewsletterRoute
   '/studio/careers': typeof StudioCareersRoute
   '/studio/founders': typeof StudioFoundersRoute
   '/studio/the-space': typeof StudioTheSpaceRoute
@@ -140,10 +185,15 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contact'
     | '/faq'
+    | '/franchise'
     | '/classes/first-class'
     | '/classes/pricing'
     | '/classes/schedule'
+    | '/community/events'
+    | '/community/journal'
+    | '/community/newsletter'
     | '/studio/careers'
     | '/studio/founders'
     | '/studio/the-space'
@@ -155,10 +205,15 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
     | '/faq'
+    | '/franchise'
     | '/classes/first-class'
     | '/classes/pricing'
     | '/classes/schedule'
+    | '/community/events'
+    | '/community/journal'
+    | '/community/newsletter'
     | '/studio/careers'
     | '/studio/founders'
     | '/studio/the-space'
@@ -170,10 +225,15 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/contact'
     | '/faq'
+    | '/franchise'
     | '/classes/first-class'
     | '/classes/pricing'
     | '/classes/schedule'
+    | '/community/events'
+    | '/community/journal'
+    | '/community/newsletter'
     | '/studio/careers'
     | '/studio/founders'
     | '/studio/the-space'
@@ -186,10 +246,15 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  FranchiseRoute: typeof FranchiseRoute
   ClassesFirstClassRoute: typeof ClassesFirstClassRoute
   ClassesPricingRoute: typeof ClassesPricingRoute
   ClassesScheduleRoute: typeof ClassesScheduleRoute
+  CommunityEventsRoute: typeof CommunityEventsRoute
+  CommunityJournalRoute: typeof CommunityJournalRoute
+  CommunityNewsletterRoute: typeof CommunityNewsletterRoute
   StudioCareersRoute: typeof StudioCareersRoute
   StudioFoundersRoute: typeof StudioFoundersRoute
   StudioTheSpaceRoute: typeof StudioTheSpaceRoute
@@ -209,11 +274,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/franchise': {
+      id: '/franchise'
+      path: '/franchise'
+      fullPath: '/franchise'
+      preLoaderRoute: typeof FranchiseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/classes/': {
@@ -242,6 +321,27 @@ declare module '@tanstack/react-router' {
       path: '/classes/schedule'
       fullPath: '/classes/schedule'
       preLoaderRoute: typeof ClassesScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/events': {
+      id: '/community/events'
+      path: '/community/events'
+      fullPath: '/community/events'
+      preLoaderRoute: typeof CommunityEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/journal': {
+      id: '/community/journal'
+      path: '/community/journal'
+      fullPath: '/community/journal'
+      preLoaderRoute: typeof CommunityJournalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/newsletter': {
+      id: '/community/newsletter'
+      path: '/community/newsletter'
+      fullPath: '/community/newsletter'
+      preLoaderRoute: typeof CommunityNewsletterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/studio/': {
@@ -298,10 +398,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  FranchiseRoute: FranchiseRoute,
   ClassesFirstClassRoute: ClassesFirstClassRoute,
   ClassesPricingRoute: ClassesPricingRoute,
   ClassesScheduleRoute: ClassesScheduleRoute,
+  CommunityEventsRoute: CommunityEventsRoute,
+  CommunityJournalRoute: CommunityJournalRoute,
+  CommunityNewsletterRoute: CommunityNewsletterRoute,
   StudioCareersRoute: StudioCareersRoute,
   StudioFoundersRoute: StudioFoundersRoute,
   StudioTheSpaceRoute: StudioTheSpaceRoute,
