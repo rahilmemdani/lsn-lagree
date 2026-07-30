@@ -10,33 +10,77 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TheMethodIndexRouteImport } from './routes/the-method/index'
+import { Route as TheMethodSebastianLagreeRouteImport } from './routes/the-method/sebastian-lagree'
+import { Route as TheMethodTheMicroProRouteImport } from './routes/the-method/the-micro-pro'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TheMethodIndexRoute = TheMethodIndexRouteImport.update({
+  id: '/the-method/',
+  path: '/the-method/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheMethodSebastianLagreeRoute =
+  TheMethodSebastianLagreeRouteImport.update({
+    id: '/the-method/sebastian-lagree',
+    path: '/the-method/sebastian-lagree',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TheMethodTheMicroProRoute = TheMethodTheMicroProRouteImport.update({
+  id: '/the-method/the-micro-pro',
+  path: '/the-method/the-micro-pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
+  '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
+  '/the-method/': typeof TheMethodIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
+  '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
+  '/the-method': typeof TheMethodIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
+  '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
+  '/the-method/': typeof TheMethodIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/the-method/sebastian-lagree'
+    | '/the-method/the-micro-pro'
+    | '/the-method/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/the-method/sebastian-lagree'
+    | '/the-method/the-micro-pro'
+    | '/the-method'
+  id:
+    | '__root__'
+    | '/'
+    | '/the-method/sebastian-lagree'
+    | '/the-method/the-micro-pro'
+    | '/the-method/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TheMethodSebastianLagreeRoute: typeof TheMethodSebastianLagreeRoute
+  TheMethodTheMicroProRoute: typeof TheMethodTheMicroProRoute
+  TheMethodIndexRoute: typeof TheMethodIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +92,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/the-method/': {
+      id: '/the-method/'
+      path: '/the-method'
+      fullPath: '/the-method/'
+      preLoaderRoute: typeof TheMethodIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-method/sebastian-lagree': {
+      id: '/the-method/sebastian-lagree'
+      path: '/the-method/sebastian-lagree'
+      fullPath: '/the-method/sebastian-lagree'
+      preLoaderRoute: typeof TheMethodSebastianLagreeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-method/the-micro-pro': {
+      id: '/the-method/the-micro-pro'
+      path: '/the-method/the-micro-pro'
+      fullPath: '/the-method/the-micro-pro'
+      preLoaderRoute: typeof TheMethodTheMicroProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TheMethodSebastianLagreeRoute: TheMethodSebastianLagreeRoute,
+  TheMethodTheMicroProRoute: TheMethodTheMicroProRoute,
+  TheMethodIndexRoute: TheMethodIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
