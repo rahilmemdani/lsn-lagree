@@ -1,24 +1,348 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import {
+  Container,
+  Section,
+  SectionHead,
+  Eyebrow,
+  ActionLink,
+  BookButton,
+} from "@/components/ui-kit";
+import { Reveal } from "@/components/Reveal";
+import { NewsletterForm } from "@/components/NewsletterForm";
+import { CLASS_FORMATS, FOUNDERS, JOURNAL_POSTS } from "@/lib/site";
+import heroStudio from "@/assets/hero-studio.jpg";
+import theSpace from "@/assets/the-space.jpg";
+import classDetail from "@/assets/class-detail.jpg";
+import machineDetail from "@/assets/machine-detail.jpg";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "LSN Lagree | India's First Lagree Studio, Mumbai" },
+      {
+        name: "description",
+        content:
+          "India's first Lagree studio, in Santacruz, Mumbai. Fifty minutes, five machines, high intensity with zero impact. Book your first class.",
+      },
+      { property: "og:title", content: "LSN Lagree | India's First Lagree Studio, Mumbai" },
+      {
+        property: "og:description",
+        content:
+          "Fifty minutes, five machines, high intensity with zero impact. Santacruz, Mumbai.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const WHY = [
+  {
+    n: "01",
+    head: "A method, not a workout.",
+    body: "Lagree is a defined discipline with its own principles, its own equipment and its own progression. We teach it the way it was designed to be taught.",
+    label: "The Method",
+  },
+  {
+    n: "02",
+    head: "Five Micro Pros.",
+    body: "Our floor is built around five Lagree Micro Pro machines. Spring-loaded, precision-calibrated, and capable of scaling from your first class to your five hundredth.",
+    label: "The Machines",
+  },
+  {
+    n: "03",
+    head: "Five people. One coach.",
+    body: "Every class caps at five. Your form is watched, corrected and progressed by name. Nobody trains at the back of the room here.",
+    label: "The Room",
+  },
+  {
+    n: "04",
+    head: "Trained at the source.",
+    body: "Our team is led by Arpan Kripalani, our Master Trainer and co-founder — one of the few certified to teach the Lagree Method in India.",
+    label: "The Coaching",
+  },
+];
+
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      {/* Hero */}
+      <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-ink">
+        <img
+          src={heroStudio}
+          alt="Low angle view of the LSN Lagree studio floor mid-class in Santacruz, Mumbai"
+          width={1600}
+          height={1008}
+          className="absolute inset-0 h-full w-full object-cover opacity-85"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/35" />
+        <Container className="relative pb-20 pt-40 md:pb-28">
+          <div className="max-w-4xl">
+            <Reveal>
+              <p className="eyebrow text-sand">Santacruz, Mumbai</p>
+            </Reveal>
+            <Reveal delay={120}>
+              <h1 className="display-xl mt-6 text-white">India's first Lagree studio.</h1>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className="mt-8 max-w-xl text-lg font-light leading-relaxed text-white/75 md:text-xl">
+                Five machines. Fifty minutes. One method that changes how you train.
+              </p>
+            </Reveal>
+            <Reveal delay={340} className="mt-10 flex flex-wrap gap-4">
+              <BookButton variant="light">Book Your First Class</BookButton>
+              <ActionLink
+                to="/the-method"
+                variant="outline"
+                className="border-white/40 text-white hover:border-white hover:bg-white hover:text-ink"
+              >
+                What Is Lagree?
+              </ActionLink>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* One-line explainer */}
+      <Section>
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+          <Reveal className="lg:col-span-5">
+            <Eyebrow>The premise</Eyebrow>
+            <h2 className="display-lg mt-5">
+              High intensity.
+              <br />
+              Zero impact.
+            </h2>
+          </Reveal>
+          <Reveal delay={140} className="space-y-6 lg:col-span-7">
+            <p className="lede">
+              Lagree is a strength method built on slow, controlled movement under constant
+              tension. No running. No jumping. No pounding your joints. Just fifty minutes of
+              continuous, deliberate resistance that works your muscles to the point of change —
+              and leaves the rest of you intact.
+            </p>
+            <p className="text-lg font-normal text-ink">
+              It is not a class you drift through. It is a method you learn.
+            </p>
+            <div className="pt-4">
+              <ActionLink to="/the-method" variant="outline">
+                Explore the Method
+              </ActionLink>
+            </div>
+          </Reveal>
+        </div>
+      </Section>
+
+      {/* Why LSN */}
+      <Section tone="sand" className="overflow-hidden">
+        <SectionHead eyebrow="Why LSN" title="Built around five." />
+        <div className="mt-14 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
+          {WHY.map((c, i) => (
+            <Reveal key={c.n} delay={i * 90} className="bg-sand-light p-8 md:p-10">
+              <div className="flex items-baseline justify-between">
+                <span className="eyebrow">{c.label}</span>
+                <span className="font-display text-sm text-clay/50">{c.n}</span>
+              </div>
+              <h3 className="mt-8 font-display text-2xl leading-tight">{c.head}</h3>
+              <p className="mt-4 text-[0.9rem] leading-relaxed text-muted-foreground">{c.body}</p>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* Classes preview */}
+      <Section>
+        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <SectionHead
+            eyebrow="Classes"
+            title="Find your format."
+            lede="Every class runs fifty minutes on the machine. What changes is the emphasis, the tempo and how hard we push the tension."
+            className="md:max-w-2xl"
+          />
+        </div>
+        <div className="mt-14 grid gap-px bg-border md:grid-cols-3">
+          {CLASS_FORMATS.slice(0, 3).map((c, i) => (
+            <Reveal key={c.name} delay={i * 100} className="bg-background p-8 md:p-10">
+              <h3 className="font-display text-3xl">{c.name}</h3>
+              <p className="mt-3 text-xs uppercase tracking-[0.2em] text-clay">{c.level}</p>
+              <p className="mt-6 text-[0.9rem] leading-relaxed text-muted-foreground">
+                {c.description}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="mt-12">
+          <ActionLink to="/classes" variant="outline">
+            See All Classes
+          </ActionLink>
+        </Reveal>
+      </Section>
+
+      {/* Founders strip */}
+      <Section tone="ink">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <Eyebrow className="text-sand">The founders</Eyebrow>
+            <h2 className="display-lg mt-5">Four people. One obsession.</h2>
+          </Reveal>
+          <Reveal delay={140} className="lg:col-span-7 lg:pt-4">
+            <p className="text-lg font-light leading-relaxed text-sand-light/70">
+              LSN was built by a trainer, a strategist, an investor and a voice — each of whom
+              found Lagree separately, and none of whom could find it in India.
+            </p>
+          </Reveal>
+        </div>
+        <div className="mt-16 grid grid-cols-2 gap-px bg-white/10 lg:grid-cols-4">
+          {FOUNDERS.map((f, i) => (
+            <Reveal key={f.name} delay={i * 90} className="bg-ink p-6 md:p-8">
+              <div className="flex aspect-[3/4] items-center justify-center bg-white/5 transition-colors duration-700 hover:bg-clay/25">
+                <span className="font-display text-4xl text-sand/70">{f.initials}</span>
+              </div>
+              <h3 className="mt-5 font-display text-xl">{f.name}</h3>
+              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-sand-light/45">
+                {f.title}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="mt-12">
+          <Link
+            to="/studio/founders"
+            className="link-underline inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.24em] text-sand"
+          >
+            Meet the Founders <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.4} />
+          </Link>
+        </Reveal>
+      </Section>
+
+      {/* The space */}
+      <section className="grid lg:grid-cols-2">
+        <Reveal className="order-2 flex items-center bg-sand-light px-6 py-20 md:px-14 lg:order-1 lg:px-20 lg:py-32">
+          <div className="max-w-lg">
+            <Eyebrow>The space</Eyebrow>
+            <h2 className="display-lg mt-5">A studio built for focus.</h2>
+            <p className="lede mt-6">
+              Low light. Considered sound. Clean lines and nothing on the walls that asks for your
+              attention. The room is designed to hold five people and one intention — and nothing
+              else.
+            </p>
+            <div className="mt-10">
+              <ActionLink to="/studio/the-space" variant="outline">
+                See the Studio
+              </ActionLink>
+            </div>
+          </div>
+        </Reveal>
+        <div className="order-1 min-h-[380px] lg:order-2 lg:min-h-[640px]">
+          <img
+            src={theSpace}
+            alt="The LSN Lagree studio floor with five Micro Pro machines"
+            width={1600}
+            height={1008}
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </section>
+
+      {/* First timers */}
+      <section className="grid lg:grid-cols-2">
+        <div className="min-h-[380px] lg:min-h-[640px]">
+          <img
+            src={classDetail}
+            alt="A coach correcting a member's form during a Lagree class at LSN"
+            width={1200}
+            height={1504}
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <Reveal className="flex items-center bg-background px-6 py-20 md:px-14 lg:px-20 lg:py-32">
+          <div className="max-w-lg">
+            <Eyebrow>First timers</Eyebrow>
+            <h2 className="display-lg mt-5">Never done Lagree before?</h2>
+            <p className="lede mt-6">
+              Good. Most people in the room started exactly where you are. Your first class is
+              guided from the first spring to the last count — what to wear, what to expect, and
+              how to survive the first eight minutes.
+            </p>
+            <div className="mt-10">
+              <ActionLink to="/classes/first-class">Start Here</ActionLink>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Journal preview */}
+      <Section>
+        <SectionHead eyebrow="Journal" title="From the Journal" />
+        <div className="mt-14 grid gap-10 md:grid-cols-3">
+          {JOURNAL_POSTS.map((p, i) => (
+            <Reveal key={p.slug} delay={i * 100} as="article">
+              <Link to="/community/journal" className="group block">
+                <div className="aspect-[4/3] overflow-hidden bg-sand-light">
+                  <img
+                    src={machineDetail}
+                    alt=""
+                    width={1200}
+                    height={1504}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                  />
+                </div>
+                <p className="eyebrow mt-6">{p.category}</p>
+                <h3 className="mt-3 font-display text-2xl leading-snug transition-colors group-hover:text-clay">
+                  {p.title}
+                </h3>
+                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                  {p.readTime}
+                </p>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="mt-12">
+          <ActionLink to="/community/journal" variant="outline">
+            Read the Journal
+          </ActionLink>
+        </Reveal>
+      </Section>
+
+      {/* Newsletter */}
+      <Section tone="sand">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <Reveal className="lg:col-span-5">
+            <h2 className="display-lg">Stay close.</h2>
+            <p className="lede mt-5">
+              Class drops, studio news and the occasional long read on training well. No noise.
+            </p>
+          </Reveal>
+          <Reveal delay={140} className="lg:col-span-7">
+            <NewsletterForm />
+          </Reveal>
+        </div>
+      </Section>
+
+      {/* Franchise teaser */}
+      <Section tone="clay">
+        <Reveal className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <p className="eyebrow text-white/70">Franchise</p>
+            <h2 className="display-lg mt-5">Bring Lagree to your city.</h2>
+            <p className="mt-6 max-w-xl text-lg font-light text-white/80">
+              We opened the first Lagree studio in India. We are now building the second, the tenth
+              and the fiftieth — with partners who understand what this method deserves.
+            </p>
+          </div>
+          <div className="lg:col-span-5 lg:text-right">
+            <ActionLink to="/franchise" variant="light">
+              Franchise Enquiries
+            </ActionLink>
+          </div>
+        </Reveal>
+      </Section>
+    </>
   );
 }
