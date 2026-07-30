@@ -15,6 +15,10 @@ import { Route as ClassesIndexRouteImport } from './routes/classes/index'
 import { Route as ClassesFirstClassRouteImport } from './routes/classes/first-class'
 import { Route as ClassesPricingRouteImport } from './routes/classes/pricing'
 import { Route as ClassesScheduleRouteImport } from './routes/classes/schedule'
+import { Route as StudioIndexRouteImport } from './routes/studio/index'
+import { Route as StudioCareersRouteImport } from './routes/studio/careers'
+import { Route as StudioFoundersRouteImport } from './routes/studio/founders'
+import { Route as StudioTheSpaceRouteImport } from './routes/studio/the-space'
 import { Route as TheMethodIndexRouteImport } from './routes/the-method/index'
 import { Route as TheMethodSebastianLagreeRouteImport } from './routes/the-method/sebastian-lagree'
 import { Route as TheMethodTheMicroProRouteImport } from './routes/the-method/the-micro-pro'
@@ -49,6 +53,26 @@ const ClassesScheduleRoute = ClassesScheduleRouteImport.update({
   path: '/classes/schedule',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudioIndexRoute = StudioIndexRouteImport.update({
+  id: '/studio/',
+  path: '/studio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioCareersRoute = StudioCareersRouteImport.update({
+  id: '/studio/careers',
+  path: '/studio/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioFoundersRoute = StudioFoundersRouteImport.update({
+  id: '/studio/founders',
+  path: '/studio/founders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioTheSpaceRoute = StudioTheSpaceRouteImport.update({
+  id: '/studio/the-space',
+  path: '/studio/the-space',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TheMethodIndexRoute = TheMethodIndexRouteImport.update({
   id: '/the-method/',
   path: '/the-method/',
@@ -72,9 +96,13 @@ export interface FileRoutesByFullPath {
   '/classes/first-class': typeof ClassesFirstClassRoute
   '/classes/pricing': typeof ClassesPricingRoute
   '/classes/schedule': typeof ClassesScheduleRoute
+  '/studio/careers': typeof StudioCareersRoute
+  '/studio/founders': typeof StudioFoundersRoute
+  '/studio/the-space': typeof StudioTheSpaceRoute
   '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
   '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
   '/classes/': typeof ClassesIndexRoute
+  '/studio/': typeof StudioIndexRoute
   '/the-method/': typeof TheMethodIndexRoute
 }
 export interface FileRoutesByTo {
@@ -83,9 +111,13 @@ export interface FileRoutesByTo {
   '/classes/first-class': typeof ClassesFirstClassRoute
   '/classes/pricing': typeof ClassesPricingRoute
   '/classes/schedule': typeof ClassesScheduleRoute
+  '/studio/careers': typeof StudioCareersRoute
+  '/studio/founders': typeof StudioFoundersRoute
+  '/studio/the-space': typeof StudioTheSpaceRoute
   '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
   '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
   '/classes': typeof ClassesIndexRoute
+  '/studio': typeof StudioIndexRoute
   '/the-method': typeof TheMethodIndexRoute
 }
 export interface FileRoutesById {
@@ -95,9 +127,13 @@ export interface FileRoutesById {
   '/classes/first-class': typeof ClassesFirstClassRoute
   '/classes/pricing': typeof ClassesPricingRoute
   '/classes/schedule': typeof ClassesScheduleRoute
+  '/studio/careers': typeof StudioCareersRoute
+  '/studio/founders': typeof StudioFoundersRoute
+  '/studio/the-space': typeof StudioTheSpaceRoute
   '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
   '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
   '/classes/': typeof ClassesIndexRoute
+  '/studio/': typeof StudioIndexRoute
   '/the-method/': typeof TheMethodIndexRoute
 }
 export interface FileRouteTypes {
@@ -108,9 +144,13 @@ export interface FileRouteTypes {
     | '/classes/first-class'
     | '/classes/pricing'
     | '/classes/schedule'
+    | '/studio/careers'
+    | '/studio/founders'
+    | '/studio/the-space'
     | '/the-method/sebastian-lagree'
     | '/the-method/the-micro-pro'
     | '/classes/'
+    | '/studio/'
     | '/the-method/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -119,9 +159,13 @@ export interface FileRouteTypes {
     | '/classes/first-class'
     | '/classes/pricing'
     | '/classes/schedule'
+    | '/studio/careers'
+    | '/studio/founders'
+    | '/studio/the-space'
     | '/the-method/sebastian-lagree'
     | '/the-method/the-micro-pro'
     | '/classes'
+    | '/studio'
     | '/the-method'
   id:
     | '__root__'
@@ -130,9 +174,13 @@ export interface FileRouteTypes {
     | '/classes/first-class'
     | '/classes/pricing'
     | '/classes/schedule'
+    | '/studio/careers'
+    | '/studio/founders'
+    | '/studio/the-space'
     | '/the-method/sebastian-lagree'
     | '/the-method/the-micro-pro'
     | '/classes/'
+    | '/studio/'
     | '/the-method/'
   fileRoutesById: FileRoutesById
 }
@@ -142,9 +190,13 @@ export interface RootRouteChildren {
   ClassesFirstClassRoute: typeof ClassesFirstClassRoute
   ClassesPricingRoute: typeof ClassesPricingRoute
   ClassesScheduleRoute: typeof ClassesScheduleRoute
+  StudioCareersRoute: typeof StudioCareersRoute
+  StudioFoundersRoute: typeof StudioFoundersRoute
+  StudioTheSpaceRoute: typeof StudioTheSpaceRoute
   TheMethodSebastianLagreeRoute: typeof TheMethodSebastianLagreeRoute
   TheMethodTheMicroProRoute: typeof TheMethodTheMicroProRoute
   ClassesIndexRoute: typeof ClassesIndexRoute
+  StudioIndexRoute: typeof StudioIndexRoute
   TheMethodIndexRoute: typeof TheMethodIndexRoute
 }
 
@@ -192,6 +244,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClassesScheduleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studio/': {
+      id: '/studio/'
+      path: '/studio'
+      fullPath: '/studio/'
+      preLoaderRoute: typeof StudioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio/careers': {
+      id: '/studio/careers'
+      path: '/studio/careers'
+      fullPath: '/studio/careers'
+      preLoaderRoute: typeof StudioCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio/founders': {
+      id: '/studio/founders'
+      path: '/studio/founders'
+      fullPath: '/studio/founders'
+      preLoaderRoute: typeof StudioFoundersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio/the-space': {
+      id: '/studio/the-space'
+      path: '/studio/the-space'
+      fullPath: '/studio/the-space'
+      preLoaderRoute: typeof StudioTheSpaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/the-method/': {
       id: '/the-method/'
       path: '/the-method'
@@ -222,9 +302,13 @@ const rootRouteChildren: RootRouteChildren = {
   ClassesFirstClassRoute: ClassesFirstClassRoute,
   ClassesPricingRoute: ClassesPricingRoute,
   ClassesScheduleRoute: ClassesScheduleRoute,
+  StudioCareersRoute: StudioCareersRoute,
+  StudioFoundersRoute: StudioFoundersRoute,
+  StudioTheSpaceRoute: StudioTheSpaceRoute,
   TheMethodSebastianLagreeRoute: TheMethodSebastianLagreeRoute,
   TheMethodTheMicroProRoute: TheMethodTheMicroProRoute,
   ClassesIndexRoute: ClassesIndexRoute,
+  StudioIndexRoute: StudioIndexRoute,
   TheMethodIndexRoute: TheMethodIndexRoute,
 }
 export const routeTree = rootRouteImport
