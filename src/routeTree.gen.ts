@@ -10,6 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ClassesIndexRouteImport } from './routes/classes/index'
+import { Route as ClassesFirstClassRouteImport } from './routes/classes/first-class'
+import { Route as ClassesPricingRouteImport } from './routes/classes/pricing'
+import { Route as ClassesScheduleRouteImport } from './routes/classes/schedule'
 import { Route as TheMethodIndexRouteImport } from './routes/the-method/index'
 import { Route as TheMethodSebastianLagreeRouteImport } from './routes/the-method/sebastian-lagree'
 import { Route as TheMethodTheMicroProRouteImport } from './routes/the-method/the-micro-pro'
@@ -17,6 +22,31 @@ import { Route as TheMethodTheMicroProRouteImport } from './routes/the-method/th
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesIndexRoute = ClassesIndexRouteImport.update({
+  id: '/classes/',
+  path: '/classes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesFirstClassRoute = ClassesFirstClassRouteImport.update({
+  id: '/classes/first-class',
+  path: '/classes/first-class',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesPricingRoute = ClassesPricingRouteImport.update({
+  id: '/classes/pricing',
+  path: '/classes/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesScheduleRoute = ClassesScheduleRouteImport.update({
+  id: '/classes/schedule',
+  path: '/classes/schedule',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TheMethodIndexRoute = TheMethodIndexRouteImport.update({
@@ -38,48 +68,83 @@ const TheMethodTheMicroProRoute = TheMethodTheMicroProRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/faq': typeof FaqRoute
+  '/classes/first-class': typeof ClassesFirstClassRoute
+  '/classes/pricing': typeof ClassesPricingRoute
+  '/classes/schedule': typeof ClassesScheduleRoute
   '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
   '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
+  '/classes/': typeof ClassesIndexRoute
   '/the-method/': typeof TheMethodIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/faq': typeof FaqRoute
+  '/classes/first-class': typeof ClassesFirstClassRoute
+  '/classes/pricing': typeof ClassesPricingRoute
+  '/classes/schedule': typeof ClassesScheduleRoute
   '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
   '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
+  '/classes': typeof ClassesIndexRoute
   '/the-method': typeof TheMethodIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/faq': typeof FaqRoute
+  '/classes/first-class': typeof ClassesFirstClassRoute
+  '/classes/pricing': typeof ClassesPricingRoute
+  '/classes/schedule': typeof ClassesScheduleRoute
   '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
   '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
+  '/classes/': typeof ClassesIndexRoute
   '/the-method/': typeof TheMethodIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/faq'
+    | '/classes/first-class'
+    | '/classes/pricing'
+    | '/classes/schedule'
     | '/the-method/sebastian-lagree'
     | '/the-method/the-micro-pro'
+    | '/classes/'
     | '/the-method/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/faq'
+    | '/classes/first-class'
+    | '/classes/pricing'
+    | '/classes/schedule'
     | '/the-method/sebastian-lagree'
     | '/the-method/the-micro-pro'
+    | '/classes'
     | '/the-method'
   id:
     | '__root__'
     | '/'
+    | '/faq'
+    | '/classes/first-class'
+    | '/classes/pricing'
+    | '/classes/schedule'
     | '/the-method/sebastian-lagree'
     | '/the-method/the-micro-pro'
+    | '/classes/'
     | '/the-method/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FaqRoute: typeof FaqRoute
+  ClassesFirstClassRoute: typeof ClassesFirstClassRoute
+  ClassesPricingRoute: typeof ClassesPricingRoute
+  ClassesScheduleRoute: typeof ClassesScheduleRoute
   TheMethodSebastianLagreeRoute: typeof TheMethodSebastianLagreeRoute
   TheMethodTheMicroProRoute: typeof TheMethodTheMicroProRoute
+  ClassesIndexRoute: typeof ClassesIndexRoute
   TheMethodIndexRoute: typeof TheMethodIndexRoute
 }
 
@@ -90,6 +155,41 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/': {
+      id: '/classes/'
+      path: '/classes'
+      fullPath: '/classes/'
+      preLoaderRoute: typeof ClassesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/first-class': {
+      id: '/classes/first-class'
+      path: '/classes/first-class'
+      fullPath: '/classes/first-class'
+      preLoaderRoute: typeof ClassesFirstClassRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/pricing': {
+      id: '/classes/pricing'
+      path: '/classes/pricing'
+      fullPath: '/classes/pricing'
+      preLoaderRoute: typeof ClassesPricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/schedule': {
+      id: '/classes/schedule'
+      path: '/classes/schedule'
+      fullPath: '/classes/schedule'
+      preLoaderRoute: typeof ClassesScheduleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/the-method/': {
@@ -118,8 +218,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FaqRoute: FaqRoute,
+  ClassesFirstClassRoute: ClassesFirstClassRoute,
+  ClassesPricingRoute: ClassesPricingRoute,
+  ClassesScheduleRoute: ClassesScheduleRoute,
   TheMethodSebastianLagreeRoute: TheMethodSebastianLagreeRoute,
   TheMethodTheMicroProRoute: TheMethodTheMicroProRoute,
+  ClassesIndexRoute: ClassesIndexRoute,
   TheMethodIndexRoute: TheMethodIndexRoute,
 }
 export const routeTree = rootRouteImport
