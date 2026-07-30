@@ -10,33 +10,259 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FranchiseRouteImport } from './routes/franchise'
+import { Route as ClassesIndexRouteImport } from './routes/classes/index'
+import { Route as ClassesFirstClassRouteImport } from './routes/classes/first-class'
+import { Route as ClassesPricingRouteImport } from './routes/classes/pricing'
+import { Route as ClassesScheduleRouteImport } from './routes/classes/schedule'
+import { Route as CommunityEventsRouteImport } from './routes/community/events'
+import { Route as CommunityJournalRouteImport } from './routes/community/journal'
+import { Route as CommunityNewsletterRouteImport } from './routes/community/newsletter'
+import { Route as StudioIndexRouteImport } from './routes/studio/index'
+import { Route as StudioCareersRouteImport } from './routes/studio/careers'
+import { Route as StudioFoundersRouteImport } from './routes/studio/founders'
+import { Route as StudioTheSpaceRouteImport } from './routes/studio/the-space'
+import { Route as TheMethodIndexRouteImport } from './routes/the-method/index'
+import { Route as TheMethodSebastianLagreeRouteImport } from './routes/the-method/sebastian-lagree'
+import { Route as TheMethodTheMicroProRouteImport } from './routes/the-method/the-micro-pro'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FranchiseRoute = FranchiseRouteImport.update({
+  id: '/franchise',
+  path: '/franchise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesIndexRoute = ClassesIndexRouteImport.update({
+  id: '/classes/',
+  path: '/classes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesFirstClassRoute = ClassesFirstClassRouteImport.update({
+  id: '/classes/first-class',
+  path: '/classes/first-class',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesPricingRoute = ClassesPricingRouteImport.update({
+  id: '/classes/pricing',
+  path: '/classes/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesScheduleRoute = ClassesScheduleRouteImport.update({
+  id: '/classes/schedule',
+  path: '/classes/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityEventsRoute = CommunityEventsRouteImport.update({
+  id: '/community/events',
+  path: '/community/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityJournalRoute = CommunityJournalRouteImport.update({
+  id: '/community/journal',
+  path: '/community/journal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityNewsletterRoute = CommunityNewsletterRouteImport.update({
+  id: '/community/newsletter',
+  path: '/community/newsletter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioIndexRoute = StudioIndexRouteImport.update({
+  id: '/studio/',
+  path: '/studio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioCareersRoute = StudioCareersRouteImport.update({
+  id: '/studio/careers',
+  path: '/studio/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioFoundersRoute = StudioFoundersRouteImport.update({
+  id: '/studio/founders',
+  path: '/studio/founders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioTheSpaceRoute = StudioTheSpaceRouteImport.update({
+  id: '/studio/the-space',
+  path: '/studio/the-space',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheMethodIndexRoute = TheMethodIndexRouteImport.update({
+  id: '/the-method/',
+  path: '/the-method/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheMethodSebastianLagreeRoute =
+  TheMethodSebastianLagreeRouteImport.update({
+    id: '/the-method/sebastian-lagree',
+    path: '/the-method/sebastian-lagree',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TheMethodTheMicroProRoute = TheMethodTheMicroProRouteImport.update({
+  id: '/the-method/the-micro-pro',
+  path: '/the-method/the-micro-pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/franchise': typeof FranchiseRoute
+  '/classes/first-class': typeof ClassesFirstClassRoute
+  '/classes/pricing': typeof ClassesPricingRoute
+  '/classes/schedule': typeof ClassesScheduleRoute
+  '/community/events': typeof CommunityEventsRoute
+  '/community/journal': typeof CommunityJournalRoute
+  '/community/newsletter': typeof CommunityNewsletterRoute
+  '/studio/careers': typeof StudioCareersRoute
+  '/studio/founders': typeof StudioFoundersRoute
+  '/studio/the-space': typeof StudioTheSpaceRoute
+  '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
+  '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
+  '/classes/': typeof ClassesIndexRoute
+  '/studio/': typeof StudioIndexRoute
+  '/the-method/': typeof TheMethodIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/franchise': typeof FranchiseRoute
+  '/classes/first-class': typeof ClassesFirstClassRoute
+  '/classes/pricing': typeof ClassesPricingRoute
+  '/classes/schedule': typeof ClassesScheduleRoute
+  '/community/events': typeof CommunityEventsRoute
+  '/community/journal': typeof CommunityJournalRoute
+  '/community/newsletter': typeof CommunityNewsletterRoute
+  '/studio/careers': typeof StudioCareersRoute
+  '/studio/founders': typeof StudioFoundersRoute
+  '/studio/the-space': typeof StudioTheSpaceRoute
+  '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
+  '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
+  '/classes': typeof ClassesIndexRoute
+  '/studio': typeof StudioIndexRoute
+  '/the-method': typeof TheMethodIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/franchise': typeof FranchiseRoute
+  '/classes/first-class': typeof ClassesFirstClassRoute
+  '/classes/pricing': typeof ClassesPricingRoute
+  '/classes/schedule': typeof ClassesScheduleRoute
+  '/community/events': typeof CommunityEventsRoute
+  '/community/journal': typeof CommunityJournalRoute
+  '/community/newsletter': typeof CommunityNewsletterRoute
+  '/studio/careers': typeof StudioCareersRoute
+  '/studio/founders': typeof StudioFoundersRoute
+  '/studio/the-space': typeof StudioTheSpaceRoute
+  '/the-method/sebastian-lagree': typeof TheMethodSebastianLagreeRoute
+  '/the-method/the-micro-pro': typeof TheMethodTheMicroProRoute
+  '/classes/': typeof ClassesIndexRoute
+  '/studio/': typeof StudioIndexRoute
+  '/the-method/': typeof TheMethodIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/faq'
+    | '/franchise'
+    | '/classes/first-class'
+    | '/classes/pricing'
+    | '/classes/schedule'
+    | '/community/events'
+    | '/community/journal'
+    | '/community/newsletter'
+    | '/studio/careers'
+    | '/studio/founders'
+    | '/studio/the-space'
+    | '/the-method/sebastian-lagree'
+    | '/the-method/the-micro-pro'
+    | '/classes/'
+    | '/studio/'
+    | '/the-method/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/faq'
+    | '/franchise'
+    | '/classes/first-class'
+    | '/classes/pricing'
+    | '/classes/schedule'
+    | '/community/events'
+    | '/community/journal'
+    | '/community/newsletter'
+    | '/studio/careers'
+    | '/studio/founders'
+    | '/studio/the-space'
+    | '/the-method/sebastian-lagree'
+    | '/the-method/the-micro-pro'
+    | '/classes'
+    | '/studio'
+    | '/the-method'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/faq'
+    | '/franchise'
+    | '/classes/first-class'
+    | '/classes/pricing'
+    | '/classes/schedule'
+    | '/community/events'
+    | '/community/journal'
+    | '/community/newsletter'
+    | '/studio/careers'
+    | '/studio/founders'
+    | '/studio/the-space'
+    | '/the-method/sebastian-lagree'
+    | '/the-method/the-micro-pro'
+    | '/classes/'
+    | '/studio/'
+    | '/the-method/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  FranchiseRoute: typeof FranchiseRoute
+  ClassesFirstClassRoute: typeof ClassesFirstClassRoute
+  ClassesPricingRoute: typeof ClassesPricingRoute
+  ClassesScheduleRoute: typeof ClassesScheduleRoute
+  CommunityEventsRoute: typeof CommunityEventsRoute
+  CommunityJournalRoute: typeof CommunityJournalRoute
+  CommunityNewsletterRoute: typeof CommunityNewsletterRoute
+  StudioCareersRoute: typeof StudioCareersRoute
+  StudioFoundersRoute: typeof StudioFoundersRoute
+  StudioTheSpaceRoute: typeof StudioTheSpaceRoute
+  TheMethodSebastianLagreeRoute: typeof TheMethodSebastianLagreeRoute
+  TheMethodTheMicroProRoute: typeof TheMethodTheMicroProRoute
+  ClassesIndexRoute: typeof ClassesIndexRoute
+  StudioIndexRoute: typeof StudioIndexRoute
+  TheMethodIndexRoute: typeof TheMethodIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +274,148 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/franchise': {
+      id: '/franchise'
+      path: '/franchise'
+      fullPath: '/franchise'
+      preLoaderRoute: typeof FranchiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/': {
+      id: '/classes/'
+      path: '/classes'
+      fullPath: '/classes/'
+      preLoaderRoute: typeof ClassesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/first-class': {
+      id: '/classes/first-class'
+      path: '/classes/first-class'
+      fullPath: '/classes/first-class'
+      preLoaderRoute: typeof ClassesFirstClassRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/pricing': {
+      id: '/classes/pricing'
+      path: '/classes/pricing'
+      fullPath: '/classes/pricing'
+      preLoaderRoute: typeof ClassesPricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/schedule': {
+      id: '/classes/schedule'
+      path: '/classes/schedule'
+      fullPath: '/classes/schedule'
+      preLoaderRoute: typeof ClassesScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/events': {
+      id: '/community/events'
+      path: '/community/events'
+      fullPath: '/community/events'
+      preLoaderRoute: typeof CommunityEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/journal': {
+      id: '/community/journal'
+      path: '/community/journal'
+      fullPath: '/community/journal'
+      preLoaderRoute: typeof CommunityJournalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/newsletter': {
+      id: '/community/newsletter'
+      path: '/community/newsletter'
+      fullPath: '/community/newsletter'
+      preLoaderRoute: typeof CommunityNewsletterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio/': {
+      id: '/studio/'
+      path: '/studio'
+      fullPath: '/studio/'
+      preLoaderRoute: typeof StudioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio/careers': {
+      id: '/studio/careers'
+      path: '/studio/careers'
+      fullPath: '/studio/careers'
+      preLoaderRoute: typeof StudioCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio/founders': {
+      id: '/studio/founders'
+      path: '/studio/founders'
+      fullPath: '/studio/founders'
+      preLoaderRoute: typeof StudioFoundersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio/the-space': {
+      id: '/studio/the-space'
+      path: '/studio/the-space'
+      fullPath: '/studio/the-space'
+      preLoaderRoute: typeof StudioTheSpaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-method/': {
+      id: '/the-method/'
+      path: '/the-method'
+      fullPath: '/the-method/'
+      preLoaderRoute: typeof TheMethodIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-method/sebastian-lagree': {
+      id: '/the-method/sebastian-lagree'
+      path: '/the-method/sebastian-lagree'
+      fullPath: '/the-method/sebastian-lagree'
+      preLoaderRoute: typeof TheMethodSebastianLagreeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-method/the-micro-pro': {
+      id: '/the-method/the-micro-pro'
+      path: '/the-method/the-micro-pro'
+      fullPath: '/the-method/the-micro-pro'
+      preLoaderRoute: typeof TheMethodTheMicroProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  FranchiseRoute: FranchiseRoute,
+  ClassesFirstClassRoute: ClassesFirstClassRoute,
+  ClassesPricingRoute: ClassesPricingRoute,
+  ClassesScheduleRoute: ClassesScheduleRoute,
+  CommunityEventsRoute: CommunityEventsRoute,
+  CommunityJournalRoute: CommunityJournalRoute,
+  CommunityNewsletterRoute: CommunityNewsletterRoute,
+  StudioCareersRoute: StudioCareersRoute,
+  StudioFoundersRoute: StudioFoundersRoute,
+  StudioTheSpaceRoute: StudioTheSpaceRoute,
+  TheMethodSebastianLagreeRoute: TheMethodSebastianLagreeRoute,
+  TheMethodTheMicroProRoute: TheMethodTheMicroProRoute,
+  ClassesIndexRoute: ClassesIndexRoute,
+  StudioIndexRoute: StudioIndexRoute,
+  TheMethodIndexRoute: TheMethodIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
