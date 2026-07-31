@@ -75,9 +75,9 @@ function Home() {
           alt="Low angle view of the LSN Lagree studio floor mid-class in Santacruz, Mumbai"
           width={1600}
           height={1008}
-          className="absolute inset-0 h-full w-full object-cover opacity-85"
+          className="absolute inset-0 h-full w-full object-cover opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/25 to-ink/10" />
         <Container className="relative pb-20 pt-40 md:pb-28">
           <div className="max-w-4xl">
             <Reveal>
@@ -184,24 +184,24 @@ function Home() {
       <Section tone="ink">
         <div className="grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <Eyebrow className="text-sand">The founders</Eyebrow>
+            <Eyebrow>The founders</Eyebrow>
             <h2 className="display-lg mt-5">Four people. One obsession.</h2>
           </Reveal>
           <Reveal delay={140} className="lg:col-span-7 lg:pt-4">
-            <p className="text-lg font-light leading-relaxed text-sand-light/70">
+            <p className="lede">
               LSN was built by a trainer, a strategist, an investor and a voice — each of whom
               found Lagree separately, and none of whom could find it in India.
             </p>
           </Reveal>
         </div>
-        <div className="mt-16 grid grid-cols-2 gap-px bg-white/10 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-px bg-border lg:grid-cols-4">
           {FOUNDERS.map((f, i) => (
-            <Reveal key={f.name} delay={i * 90} className="bg-ink p-6 md:p-8">
-              <div className="flex aspect-[3/4] items-center justify-center bg-white/5 transition-colors duration-700 hover:bg-clay/25">
-                <span className="font-display text-4xl text-sand/70">{f.initials}</span>
+            <Reveal key={f.name} delay={i * 90} className="bg-background p-6 md:p-8">
+              <div className="flex aspect-[3/4] items-center justify-center bg-sand/50 transition-colors duration-700 hover:bg-clay/20">
+                <span className="font-display text-4xl text-clay/70">{f.initials}</span>
               </div>
               <h3 className="mt-5 font-display text-xl">{f.name}</h3>
-              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-sand-light/45">
+              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
                 {f.title}
               </p>
             </Reveal>
@@ -210,7 +210,7 @@ function Home() {
         <Reveal className="mt-12">
           <Link
             to="/studio/founders"
-            className="link-underline inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.24em] text-sand"
+            className="link-underline inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.24em] text-clay"
           >
             Meet the Founders <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.4} />
           </Link>
@@ -329,15 +329,15 @@ function Home() {
       <Section tone="clay">
         <Reveal className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="eyebrow text-white/70">Franchise</p>
+            <p className="eyebrow">Franchise</p>
             <h2 className="display-lg mt-5">Bring Lagree to your city.</h2>
-            <p className="mt-6 max-w-xl text-lg font-light text-white/80">
+            <p className="mt-6 max-w-xl text-lg font-light text-ink-soft">
               We opened the first Lagree studio in India. We are now building the second, the tenth
               and the fiftieth — with partners who understand what this method deserves.
             </p>
           </div>
           <div className="lg:col-span-5 lg:text-right">
-            <ActionLink to="/franchise" variant="light">
+            <ActionLink to="/franchise">
               Franchise Enquiries
             </ActionLink>
           </div>

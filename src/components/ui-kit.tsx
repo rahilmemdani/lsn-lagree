@@ -32,8 +32,8 @@ export function Section({
   const tones = {
     white: "bg-background text-foreground",
     sand: "bg-sand-light text-foreground",
-    clay: "bg-clay text-white",
-    ink: "bg-ink text-sand-light",
+    clay: "bg-sand text-ink",
+    ink: "bg-sand-light text-ink",
   } as const;
   return (
     <section id={id} className={cn("py-20 md:py-28 lg:py-36", tones[tone], className)}>
@@ -159,10 +159,10 @@ export function CtaBand({
       <Reveal className="flex flex-col items-start gap-10 md:flex-row md:items-end md:justify-between">
         <div className="max-w-2xl">
           <h2 className="display-lg">{title}</h2>
-          {body ? <p className="mt-6 text-lg font-light text-white/80">{body}</p> : null}
+          {body ? <p className="mt-6 text-lg font-light text-ink-soft">{body}</p> : null}
         </div>
         <div className="flex flex-wrap gap-4">
-          {children ?? <BookButton variant="light">Book Your First Class</BookButton>}
+          {children ?? <BookButton variant="solid">Book Your First Class</BookButton>}
         </div>
       </Reveal>
     </Section>
