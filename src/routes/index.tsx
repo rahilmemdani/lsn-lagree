@@ -77,7 +77,7 @@ function Home() {
           height={1008}
           className="absolute inset-0 h-full w-full object-cover opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
         <Container className="relative pb-20 pt-40 md:pb-28">
           <div className="max-w-4xl">
             <Reveal>
