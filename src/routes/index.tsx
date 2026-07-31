@@ -77,20 +77,21 @@ function Home() {
           height={1008}
           className="absolute inset-0 h-full w-full object-cover opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background from-15% via-background/80 via-45% to-transparent" />
         <Container className="relative pb-20 pt-40 md:pb-28">
           <div className="max-w-4xl">
             <Reveal>
-              <p className="eyebrow">Santacruz, Mumbai</p>
+              <p className="eyebrow text-clay">Santacruz, Mumbai</p>
             </Reveal>
             <Reveal delay={120}>
               <h1 className="display-xl mt-6 text-ink">India's first Lagree studio.</h1>
             </Reveal>
             <Reveal delay={240}>
-              <p className="mt-8 max-w-xl text-lg font-light leading-relaxed text-ink-soft md:text-xl">
+              <p className="mt-8 max-w-xl text-lg font-normal leading-relaxed text-ink md:text-xl">
                 Five machines. Fifty minutes. One method that changes how you train.
               </p>
             </Reveal>
+
             <Reveal delay={340} className="mt-10 flex flex-wrap gap-4">
               <BookButton>Book Your First Class</BookButton>
               <ActionLink
