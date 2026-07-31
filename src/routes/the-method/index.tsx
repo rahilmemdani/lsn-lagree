@@ -114,31 +114,30 @@ function MethodPage() {
         <SectionHead
           eyebrow="Comparison"
           title="Lagree, against conventional training."
-          className="[&_h2]:text-sand-light"
         />
         <div className="mt-12 overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
-              <tr className="border-b border-white/15">
-                <th className="w-1/4 py-4 pr-6 text-[0.65rem] uppercase tracking-[0.24em] text-sand-light/50">
+              <tr className="border-b border-border">
+                <th className="w-1/4 py-4 pr-6 text-[0.65rem] uppercase tracking-[0.24em] text-muted-foreground">
                   &nbsp;
                 </th>
-                <th className="py-4 pr-6 text-[0.65rem] uppercase tracking-[0.24em] text-sand-light/50">
+                <th className="py-4 pr-6 text-[0.65rem] uppercase tracking-[0.24em] text-muted-foreground">
                   Conventional training
                 </th>
-                <th className="py-4 text-[0.65rem] uppercase tracking-[0.24em] text-sand">
+                <th className="py-4 text-[0.65rem] uppercase tracking-[0.24em] text-clay">
                   The Lagree Method
                 </th>
               </tr>
             </thead>
             <tbody>
               {COMPARISON.map((row) => (
-                <tr key={row[0]} className="border-b border-white/10">
+                <tr key={row[0]} className="border-b border-border">
                   <th scope="row" className="py-6 pr-6 font-display text-lg font-normal">
                     {row[0]}
                   </th>
-                  <td className="py-6 pr-6 text-sm text-sand-light/55">{row[1]}</td>
-                  <td className="py-6 text-sm text-sand-light">{row[2]}</td>
+                  <td className="py-6 pr-6 text-sm text-muted-foreground">{row[1]}</td>
+                  <td className="py-6 text-sm text-ink">{row[2]}</td>
                 </tr>
               ))}
             </tbody>

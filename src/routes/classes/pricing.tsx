@@ -73,12 +73,12 @@ function PricingPage() {
             <Reveal
               key={p.name}
               delay={i * 90}
-              className={p.featured ? "bg-ink p-8 text-sand-light md:p-10" : "bg-background p-8 md:p-10"}
+              className={p.featured ? "bg-sand p-8 text-ink md:p-10" : "bg-background p-8 md:p-10"}
             >
               <p
                 className={
                   p.featured
-                    ? "eyebrow text-sand"
+                    ? "eyebrow text-clay-deep"
                     : "eyebrow"
                 }
               >
@@ -92,7 +92,7 @@ function PricingPage() {
                     key={l}
                     className={
                       p.featured
-                        ? "border-t border-white/12 pt-3 text-sm text-sand-light/70"
+                        ? "border-t border-ink/10 pt-3 text-sm text-ink-soft"
                         : "border-t border-border pt-3 text-sm text-muted-foreground"
                     }
                   >
@@ -101,7 +101,7 @@ function PricingPage() {
                 ))}
               </ul>
               <div className="mt-10">
-                <BookButton variant={p.featured ? "light" : "outline"}>Book</BookButton>
+                <BookButton variant={p.featured ? "solid" : "outline"}>Book</BookButton>
               </div>
             </Reveal>
           ))}

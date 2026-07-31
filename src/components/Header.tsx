@@ -32,7 +32,7 @@ export function Header() {
     };
   }, [open]);
 
-  const overDark = isHome && !scrolled;
+  const overDark = false;
 
   return (
     <>
