@@ -69,7 +69,7 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-ink">
+      <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-sand-light">
         <img
           src={heroStudio}
           alt="Low angle view of the LSN Lagree studio floor mid-class in Santacruz, Mumbai"
@@ -77,26 +77,25 @@ function Home() {
           height={1008}
           className="absolute inset-0 h-full w-full object-cover opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/25 to-ink/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10" />
         <Container className="relative pb-20 pt-40 md:pb-28">
           <div className="max-w-4xl">
             <Reveal>
-              <p className="eyebrow text-sand">Santacruz, Mumbai</p>
+              <p className="eyebrow">Santacruz, Mumbai</p>
             </Reveal>
             <Reveal delay={120}>
-              <h1 className="display-xl mt-6 text-white">India's first Lagree studio.</h1>
+              <h1 className="display-xl mt-6 text-ink">India's first Lagree studio.</h1>
             </Reveal>
             <Reveal delay={240}>
-              <p className="mt-8 max-w-xl text-lg font-light leading-relaxed text-white/75 md:text-xl">
+              <p className="mt-8 max-w-xl text-lg font-light leading-relaxed text-ink-soft md:text-xl">
                 Five machines. Fifty minutes. One method that changes how you train.
               </p>
             </Reveal>
             <Reveal delay={340} className="mt-10 flex flex-wrap gap-4">
-              <BookButton variant="light">Book Your First Class</BookButton>
+              <BookButton>Book Your First Class</BookButton>
               <ActionLink
                 to="/the-method"
                 variant="outline"
-                className="border-white/40 text-white hover:border-white hover:bg-white hover:text-ink"
               >
                 What Is Lagree?
               </ActionLink>
