@@ -98,7 +98,8 @@ function Home() {
     <>
       {/* Hero — split: auto carousel panel + editorial copy panel */}
       <section className="relative border-b border-border bg-background pt-20 md:pt-24">
-        <div className="grid lg:h-[min(860px,calc(100svh-6rem))] lg:min-h-[600px] lg:grid-cols-[1.05fr_1fr]">
+        <div className="grid lg:grid-cols-[1.05fr_1fr]" style={{ ["--hero-h" as string]: "860px" }}>
+          {/* height handled per-panel so the copy column can breathe on short screens */}
           <AutoCarousel
             eager
             slides={HERO_SLIDES}
