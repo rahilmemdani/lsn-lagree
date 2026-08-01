@@ -277,16 +277,27 @@ function Home() {
             </div>
           </div>
         </Reveal>
-        <div className="order-1 min-h-[380px] lg:order-2 lg:min-h-[640px]">
-          <img
-            src={theSpace}
-            alt="The LSN Lagree studio floor with five Micro Pro machines"
-            width={1600}
-            height={1008}
-            loading="lazy"
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <AutoCarousel
+          className="order-1 min-h-[380px] lg:order-2 lg:min-h-[640px]"
+          interval={5200}
+          slides={[
+            {
+              src: theSpace,
+              alt: "The LSN Lagree studio floor with five Micro Pro machines",
+              caption: "Five machines, one floor",
+            },
+            {
+              src: machineDetail,
+              alt: "Detail of a Micro Pro spring and carriage assembly",
+              caption: "Calibrated spring system",
+            },
+            {
+              src: classDetail,
+              alt: "A coach correcting a member's form during a class at LSN Lagree",
+              caption: "Coached by name",
+            },
+          ]}
+        />
       </section>
 
       {/* First timers */}
