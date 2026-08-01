@@ -3,8 +3,8 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X, ChevronDown, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV, BOOKING_URL } from "@/lib/site";
-import logoBrown from "@/assets/lsn-logo-brown.png.asset.json";
-import logoBeige from "@/assets/lsn-logo-beige.png.asset.json";
+import logoBrown from "/assets/lsn-logo-brown.png"
+import logoBeige from "/assets/lsn-logo-brown.png";
 
 export function Header() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -47,7 +47,7 @@ export function Header() {
         <div className="mx-auto flex w-full max-w-[1320px] items-center justify-between gap-6 px-6 py-4 md:px-10 md:py-5 lg:px-16">
           <Link to="/" aria-label="LSN Lagree home" className="shrink-0">
             <img
-              src={overDark ? logoBeige.url : logoBrown.url}
+              src={overDark ? logoBeige : logoBrown}
               alt="LSN Lagree"
               width={148}
               height={44}
@@ -119,7 +119,7 @@ export function Header() {
         )}
       >
         <div className="flex items-center justify-between px-6 py-4">
-          <img src={logoBrown.url} alt="LSN Lagree" width={148} height={44} className="h-7 w-auto" />
+          <img src={logoBrown} alt="LSN Lagree" width={148} height={44} className="h-7 w-auto" />
           <button type="button" onClick={() => setOpen(false)} aria-label="Close menu" className="p-2">
             <X className="h-6 w-6" strokeWidth={1.2} />
           </button>
