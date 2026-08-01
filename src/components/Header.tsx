@@ -38,10 +38,10 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "fixed inset-x-0 top-0 z-50 border-b transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
           scrolled || !isHome
-            ? "border-b border-border bg-background/92 backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent",
+            ? "border-border bg-background/92 backdrop-blur-xl"
+            : "border-transparent bg-background",
         )}
       >
         <div className="mx-auto flex w-full max-w-[1320px] items-center justify-between gap-6 px-6 py-4 md:px-10 md:py-5 lg:px-16">

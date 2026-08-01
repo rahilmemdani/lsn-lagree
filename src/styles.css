@@ -249,6 +249,15 @@
   }
 }
 
+@keyframes lsn-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
 @utility reveal {
   opacity: 0;
 }

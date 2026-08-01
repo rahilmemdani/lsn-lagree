@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import {
-  Container,
   Section,
   SectionHead,
   Eyebrow,
@@ -9,12 +8,41 @@ import {
   BookButton,
 } from "@/components/ui-kit";
 import { Reveal } from "@/components/Reveal";
+import { AutoCarousel } from "@/components/Carousel";
+import { Marquee } from "@/components/Marquee";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { CLASS_FORMATS, FOUNDERS, JOURNAL_POSTS } from "@/lib/site";
 import heroStudio from "@/assets/hero-studio.jpg";
+import heroA from "@/assets/hero-a.jpg";
+import heroB from "@/assets/hero-b.jpg";
 import theSpace from "@/assets/the-space.jpg";
 import classDetail from "@/assets/class-detail.jpg";
 import machineDetail from "@/assets/machine-detail.jpg";
+
+const HERO_SLIDES = [
+  {
+    src: heroA,
+    alt: "A member working through a slow, controlled movement on a Micro Pro machine at LSN Lagree",
+    caption: "The method, on the machine",
+  },
+  {
+    src: heroStudio,
+    alt: "The LSN Lagree studio floor in Santacruz, Mumbai",
+    caption: "Santacruz, Mumbai",
+  },
+  {
+    src: heroB,
+    alt: "Hands gripping the cable handle of a spring-loaded Micro Pro machine",
+    caption: "Constant tension, both directions",
+  },
+];
+
+const HERO_STATS = [
+  { value: "50", label: "Minutes" },
+  { value: "5", label: "Machines" },
+  { value: "01", label: "Method" },
+];
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -68,42 +96,56 @@ const WHY = [
 function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-sand-light">
-        <img
-          src={heroStudio}
-          alt="Low angle view of the LSN Lagree studio floor mid-class in Santacruz, Mumbai"
-          width={1600}
-          height={1008}
-          className="absolute inset-0 h-full w-full object-cover opacity-100"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background from-15% via-background/80 via-45% to-transparent" />
-        <Container className="relative pb-20 pt-40 md:pb-28">
-          <div className="max-w-4xl">
-            <Reveal>
-              <p className="eyebrow text-clay">Santacruz, Mumbai</p>
-            </Reveal>
-            <Reveal delay={120}>
-              <h1 className="display-xl mt-6 text-ink">India's first Lagree studio.</h1>
-            </Reveal>
-            <Reveal delay={240}>
-              <p className="mt-8 max-w-xl text-lg font-normal leading-relaxed text-ink md:text-xl">
-                Five machines. Fifty minutes. One method that changes how you train.
-              </p>
-            </Reveal>
+      {/* Hero — split: auto carousel panel + editorial copy panel */}
+      <section className="relative border-b border-border bg-background pt-20 md:pt-24">
+        <div className="grid items-stretch lg:grid-cols-[1.05fr_1fr]">
+          <AutoCarousel
+            eager
+            slides={HERO_SLIDES}
+            className="h-[52vh] min-h-[340px] lg:h-[780px]"
+          />
 
-            <Reveal delay={340} className="mt-10 flex flex-wrap gap-4">
-              <BookButton>Book Your First Class</BookButton>
-              <ActionLink
-                to="/the-method"
-                variant="outline"
-              >
-                What Is Lagree?
-              </ActionLink>
-            </Reveal>
+          <div className="flex items-center px-6 py-16 md:px-12 lg:px-16 lg:py-24">
+            <div className="w-full max-w-xl">
+              <Reveal>
+                <div className="flex items-center gap-4">
+                  <span className="h-[1px] w-10 bg-clay/50" />
+                  <p className="eyebrow">Santacruz, Mumbai</p>
+                </div>
+              </Reveal>
+              <Reveal delay={110}>
+                <h1 className="display-xl mt-7 text-ink">India&rsquo;s first Lagree studio.</h1>
+              </Reveal>
+              <Reveal delay={220}>
+                <p className="lede mt-7 max-w-md">
+                  Five machines. Fifty minutes. One method that changes how you train.
+                </p>
+              </Reveal>
+              <Reveal delay={300} className="mt-10 flex flex-wrap gap-3">
+                <BookButton>Book Your First Class</BookButton>
+                <ActionLink to="/the-method" variant="outline">
+                  What Is Lagree?
+                </ActionLink>
+              </Reveal>
+              <Reveal delay={380} className="mt-14 grid grid-cols-3 gap-px bg-border">
+                {HERO_STATS.map((s) => (
+                  <div key={s.label} className="bg-background pr-4 pt-5">
+                    <p className="font-display text-3xl text-clay md:text-4xl">{s.value}</p>
+                    <p className="mt-2 text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
+                      {s.label}
+                    </p>
+                  </div>
+                ))}
+              </Reveal>
+            </div>
           </div>
-        </Container>
+        </div>
       </section>
+
+      <Marquee
+        items={["Control", "Strength", "Endurance", "Precision", "Tension", "Discipline"]}
+      />
+
 
       {/* One-line explainer */}
       <Section>
@@ -235,16 +277,27 @@ function Home() {
             </div>
           </div>
         </Reveal>
-        <div className="order-1 min-h-[380px] lg:order-2 lg:min-h-[640px]">
-          <img
-            src={theSpace}
-            alt="The LSN Lagree studio floor with five Micro Pro machines"
-            width={1600}
-            height={1008}
-            loading="lazy"
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <AutoCarousel
+          className="order-1 min-h-[380px] lg:order-2 lg:min-h-[640px]"
+          interval={5200}
+          slides={[
+            {
+              src: theSpace,
+              alt: "The LSN Lagree studio floor with five Micro Pro machines",
+              caption: "Five machines, one floor",
+            },
+            {
+              src: machineDetail,
+              alt: "Detail of a Micro Pro spring and carriage assembly",
+              caption: "Calibrated spring system",
+            },
+            {
+              src: classDetail,
+              alt: "A coach correcting a member's form during a class at LSN Lagree",
+              caption: "Coached by name",
+            },
+          ]}
+        />
       </section>
 
       {/* First timers */}
