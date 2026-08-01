@@ -130,7 +130,7 @@ function Home() {
                 </ActionLink>
               </Reveal>
 
-              <Reveal delay={380} className="mt-12">
+              {/* <Reveal delay={380} className="mt-12">
                 <div className="rule-hairline" />
                 <div className="mt-6 flex divide-x divide-border">
                   {HERO_STATS.map((s) => (
@@ -144,7 +144,7 @@ function Home() {
                     </div>
                   ))}
                 </div>
-              </Reveal>
+              </Reveal> */}
             </div>
           </div>
         </div>
