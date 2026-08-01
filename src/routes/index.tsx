@@ -96,16 +96,16 @@ const WHY = [
 function Home() {
   return (
     <>
-      {/* Hero — split: auto carousel panel + editorial copy panel */}
-      <section className="relative border-b border-border bg-background pt-20 md:pt-24">
-        <div className="grid items-stretch lg:grid-cols-[1.05fr_1fr]">
+      {/* Hero — split: auto carousel panel + editorial copy panel, locked to one viewport */}
+      <section className="relative flex min-h-svh flex-col border-b border-border bg-background pt-[76px] md:pt-[92px] lg:h-svh lg:overflow-hidden">
+        <div className="grid flex-1 items-stretch lg:grid-cols-[1.05fr_1fr]">
           <AutoCarousel
             eager
             slides={HERO_SLIDES}
-            className="h-[52vh] min-h-[340px] lg:h-[780px]"
+            className="h-[42vh] min-h-[300px] lg:h-full"
           />
 
-          <div className="flex items-center px-6 py-16 md:px-12 lg:px-16 lg:py-24">
+          <div className="flex items-center px-6 py-10 md:px-12 lg:px-16 lg:py-0">
             <div className="w-full max-w-xl">
               <Reveal>
                 <div className="flex items-center gap-4">
@@ -114,28 +114,36 @@ function Home() {
                 </div>
               </Reveal>
               <Reveal delay={110}>
-                <h1 className="display-xl mt-7 text-ink">India&rsquo;s first Lagree studio.</h1>
+                <h1 className="mt-6 font-display text-[clamp(2.25rem,4.4vw,4.5rem)] font-normal leading-[0.98] tracking-[-0.02em] text-ink">
+                  India&rsquo;s first Lagree studio.
+                </h1>
               </Reveal>
               <Reveal delay={220}>
-                <p className="lede mt-7 max-w-md">
+                <p className="lede mt-6 max-w-md">
                   Five machines. Fifty minutes. One method that changes how you train.
                 </p>
               </Reveal>
-              <Reveal delay={300} className="mt-10 flex flex-wrap gap-3">
+              <Reveal delay={300} className="mt-8 flex flex-wrap gap-3">
                 <BookButton>Book Your First Class</BookButton>
                 <ActionLink to="/the-method" variant="outline">
                   What Is Lagree?
                 </ActionLink>
               </Reveal>
-              <Reveal delay={380} className="mt-14 grid grid-cols-3 gap-px bg-border">
-                {HERO_STATS.map((s) => (
-                  <div key={s.label} className="bg-background pr-4 pt-5">
-                    <p className="font-display text-3xl text-clay md:text-4xl">{s.value}</p>
-                    <p className="mt-2 text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
+
+              <Reveal delay={380} className="mt-12">
+                <div className="rule-hairline" />
+                <div className="mt-6 flex divide-x divide-border">
+                  {HERO_STATS.map((s) => (
+                    <div key={s.label} className="flex-1 px-6 first:pl-0 last:pr-0 md:px-8">
+                      <p className="font-display text-3xl tabular-nums text-clay md:text-4xl">
+                        {s.value}
+                      </p>
+                      <p className="mt-2 text-[0.6rem] uppercase tracking-[0.24em] text-muted-foreground">
+                        {s.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </Reveal>
             </div>
           </div>
