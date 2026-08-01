@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import {
-  Container,
   Section,
   SectionHead,
   Eyebrow,
@@ -9,12 +8,41 @@ import {
   BookButton,
 } from "@/components/ui-kit";
 import { Reveal } from "@/components/Reveal";
+import { AutoCarousel } from "@/components/Carousel";
+import { Marquee } from "@/components/Marquee";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { CLASS_FORMATS, FOUNDERS, JOURNAL_POSTS } from "@/lib/site";
 import heroStudio from "@/assets/hero-studio.jpg";
+import heroA from "@/assets/hero-a.jpg";
+import heroB from "@/assets/hero-b.jpg";
 import theSpace from "@/assets/the-space.jpg";
 import classDetail from "@/assets/class-detail.jpg";
 import machineDetail from "@/assets/machine-detail.jpg";
+
+const HERO_SLIDES = [
+  {
+    src: heroA,
+    alt: "A member working through a slow, controlled movement on a Micro Pro machine at LSN Lagree",
+    caption: "The method, on the machine",
+  },
+  {
+    src: heroStudio,
+    alt: "The LSN Lagree studio floor in Santacruz, Mumbai",
+    caption: "Santacruz, Mumbai",
+  },
+  {
+    src: heroB,
+    alt: "Hands gripping the cable handle of a spring-loaded Micro Pro machine",
+    caption: "Constant tension, both directions",
+  },
+];
+
+const HERO_STATS = [
+  { value: "50", label: "Minutes" },
+  { value: "5", label: "Machines" },
+  { value: "01", label: "Method" },
+];
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
