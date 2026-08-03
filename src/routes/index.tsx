@@ -204,6 +204,27 @@ function Home() {
         </div>
       </Section>
 
+      {/* Image triptych */}
+      <section className="grid gap-px bg-border sm:grid-cols-3">
+        {[
+          { src: studioLight, alt: "Bright, airy studio floor at LSN Lagree" },
+          { src: memberA, alt: "A member working through a slow repetition on the machine" },
+          { src: detailHandle, alt: "Close detail of the cable handle on a Micro Pro machine" },
+        ].map((img, i) => (
+          <Reveal key={img.src} delay={i * 110} className="relative overflow-hidden">
+            <img
+              src={img.src}
+              alt={img.alt}
+              width={1024}
+              height={1280}
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover object-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.04] sm:aspect-[3/4]"
+            />
+          </Reveal>
+        ))}
+      </section>
+
+
       {/* Classes preview */}
       <Section>
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
@@ -270,73 +291,71 @@ function Home() {
       </Section>
 
       {/* The space */}
-      <section className="grid lg:grid-cols-2">
-        <Reveal className="order-2 flex items-center bg-sand-light px-6 py-20 md:px-14 lg:order-1 lg:px-20 lg:py-32">
-          <div className="max-w-lg">
-            <Eyebrow>The space</Eyebrow>
-            <h2 className="display-lg mt-5">A studio built for focus.</h2>
-            <p className="lede mt-6">
-              Low light. Considered sound. Clean lines and nothing on the walls that asks for your
-              attention. The room is designed to hold five people and one intention — and nothing
-              else.
-            </p>
-            <div className="mt-10">
-              <ActionLink to="/studio/the-space" variant="outline">
-                See the Studio
-              </ActionLink>
-            </div>
-          </div>
-        </Reveal>
-        <AutoCarousel
-          className="order-1 min-h-[380px] lg:order-2 lg:min-h-[640px]"
-          interval={5200}
-          slides={[
-            {
-              src: theSpace,
-              alt: "The LSN Lagree studio floor with five Micro Pro machines",
-              caption: "Five machines, one floor",
-            },
-            {
-              src: machineDetail,
-              alt: "Detail of a Micro Pro spring and carriage assembly",
-              caption: "Calibrated spring system",
-            },
-            {
-              src: classDetail,
-              alt: "A coach correcting a member's form during a class at LSN Lagree",
-              caption: "Coached by name",
-            },
-          ]}
-        />
-      </section>
+      <SplitCarouselSection
+        eyebrow="The space"
+        title="A studio built for focus."
+        tone="sand"
+        reverse
+        body={
+          <p>
+            Low light. Considered sound. Clean lines and nothing on the walls that asks for your
+            attention. The room is designed to hold five people and one intention — and nothing
+            else.
+          </p>
+        }
+        slides={[
+          {
+            src: theSpace,
+            alt: "The LSN Lagree studio floor with five Micro Pro machines",
+            caption: "Five machines, one floor",
+          },
+          {
+            src: studioLight,
+            alt: "Bright studio floor at LSN Lagree with natural daylight",
+            caption: "Daylight and quiet",
+          },
+          {
+            src: studioCorner,
+            alt: "The reception corner of the LSN Lagree studio",
+            caption: "Considered detail",
+          },
+        ]}
+      >
+        <ActionLink to="/studio/the-space" variant="outline">
+          See the Studio
+        </ActionLink>
+      </SplitCarouselSection>
 
       {/* First timers */}
-      <section className="grid lg:grid-cols-2">
-        <div className="min-h-[380px] lg:min-h-[640px]">
-          <img
-            src={classDetail}
-            alt="A coach correcting a member's form during a Lagree class at LSN"
-            width={1200}
-            height={1504}
-            loading="lazy"
-            className="h-full w-full object-cover"
-          />
-        </div>
-        <Reveal className="flex items-center bg-background px-6 py-20 md:px-14 lg:px-20 lg:py-32">
-          <div className="max-w-lg">
-            <Eyebrow>First timers</Eyebrow>
-            <h2 className="display-lg mt-5">Never done Lagree before?</h2>
-            <p className="lede mt-6">
-              Good. Most people in the room started exactly where you are. Your first class is
-              guided from the first spring to the last count — what to wear, what to expect, and
-              how to survive the first eight minutes.
-            </p>
-            <div className="mt-10">
-              <ActionLink to="/classes/first-class">Start Here</ActionLink>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+      <SplitCarouselSection
+        eyebrow="First timers"
+        title="Never done Lagree before?"
+        body={
+          <p>
+            Good. Most people in the room started exactly where you are. Your first class is guided
+            from the first spring to the last count — what to wear, what to expect, and how to
+            survive the first eight minutes.
+          </p>
+        }
+        slides={[
+          {
+            src: classDetail,
+            alt: "A coach correcting a member's form during a Lagree class at LSN",
+            caption: "Coached by name",
+          },
+          {
+            src: memberA,
+            alt: "A member holding a slow, controlled position on the machine",
+            caption: "Slow and controlled",
+          },
+          {
+            src: detailHandle,
+            alt: "Hands gripping the cable handle of a Micro Pro machine",
+            caption: "Constant tension",
+          },
+        ]}
+      />
+
 
       {/* Journal preview */}
       <Section>
