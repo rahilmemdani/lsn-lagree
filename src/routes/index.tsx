@@ -8,7 +8,7 @@ import {
   BookButton,
 } from "@/components/ui-kit";
 import { Reveal } from "@/components/Reveal";
-import { AutoCarousel } from "@/components/Carousel";
+import { AutoCarousel, SplitCarouselSection } from "@/components/Carousel";
 import { Marquee } from "@/components/Marquee";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { CLASS_FORMATS, FOUNDERS, JOURNAL_POSTS } from "@/lib/site";
@@ -18,6 +18,10 @@ import heroB from "@/assets/hero-b.jpg";
 import theSpace from "@/assets/the-space.jpg";
 import classDetail from "@/assets/class-detail.jpg";
 import machineDetail from "@/assets/machine-detail.jpg";
+import studioLight from "@/assets/studio-light.jpg";
+import studioCorner from "@/assets/studio-corner.jpg";
+import memberA from "@/assets/member-a.jpg";
+import detailHandle from "@/assets/detail-handle.jpg";
 
 const HERO_SLIDES = [
   {
