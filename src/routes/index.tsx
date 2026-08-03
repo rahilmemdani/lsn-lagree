@@ -96,16 +96,10 @@ const WHY = [
 function Home() {
   return (
     <>
-      {/* Hero — split: auto carousel panel + editorial copy panel, locked to one viewport */}
+      {/* Hero — left copy panel, right auto carousel with arrows, one viewport */}
       <section className="relative flex min-h-svh flex-col border-b border-border bg-background pt-[76px] md:pt-[92px] lg:h-svh lg:overflow-hidden">
-        <div className="grid flex-1 items-stretch lg:grid-cols-[1.05fr_1fr]">
-          <AutoCarousel
-            eager
-            slides={HERO_SLIDES}
-            className="h-[42vh] min-h-[300px] lg:h-full"
-          />
-
-          <div className="flex items-center px-6 py-10 md:px-12 lg:px-16 lg:py-0">
+        <div className="grid flex-1 items-stretch lg:grid-cols-[1fr_1.05fr]">
+          <div className="flex items-center px-6 py-12 md:px-12 lg:order-1 lg:px-16 lg:py-0">
             <div className="w-full max-w-xl">
               <Reveal>
                 <div className="flex items-center gap-4">
@@ -130,7 +124,7 @@ function Home() {
                 </ActionLink>
               </Reveal>
 
-              {/* <Reveal delay={380} className="mt-12">
+              <Reveal delay={380} className="mt-12">
                 <div className="rule-hairline" />
                 <div className="mt-6 flex divide-x divide-border">
                   {HERO_STATS.map((s) => (
@@ -144,11 +138,19 @@ function Home() {
                     </div>
                   ))}
                 </div>
-              </Reveal> */}
+              </Reveal>
             </div>
           </div>
+
+          <AutoCarousel
+            eager
+            showArrows
+            slides={HERO_SLIDES}
+            className="aspect-[4/5] w-full sm:aspect-[16/10] lg:order-2 lg:aspect-auto lg:h-full"
+          />
         </div>
       </section>
+
 
       <Marquee
         items={["Control", "Strength", "Endurance", "Precision", "Tension", "Discipline"]}
