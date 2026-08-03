@@ -81,13 +81,15 @@ type ButtonProps = {
 };
 
 const buttonBase =
-  "group inline-flex items-center justify-center gap-3 px-8 py-4 text-[0.7rem] font-normal uppercase tracking-[0.24em] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]";
+  "group inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-[0.68rem] font-normal uppercase tracking-[0.2em] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.97]";
 
 const buttonVariants = {
-  solid: "bg-clay text-white hover:bg-clay-deep",
-  outline: "border border-clay/40 text-clay hover:border-clay hover:bg-clay hover:text-white",
+  solid:
+    "bg-clay text-white shadow-[0_8px_24px_-12px_color-mix(in_oklab,var(--clay)_65%,transparent)] hover:bg-clay-deep hover:shadow-[0_14px_34px_-14px_color-mix(in_oklab,var(--clay)_70%,transparent)]",
+  outline:
+    "border border-clay/30 bg-white/60 text-clay backdrop-blur-sm hover:border-clay/60 hover:bg-clay hover:text-white",
   ghost: "text-foreground hover:text-clay",
-  light: "bg-sand-light text-ink hover:bg-white",
+  light: "bg-sand-light text-ink shadow-sm hover:bg-white",
 } as const;
 
 export function ActionLink({

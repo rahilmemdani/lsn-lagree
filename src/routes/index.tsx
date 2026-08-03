@@ -8,7 +8,7 @@ import {
   BookButton,
 } from "@/components/ui-kit";
 import { Reveal } from "@/components/Reveal";
-import { AutoCarousel } from "@/components/Carousel";
+import { AutoCarousel, SplitCarouselSection } from "@/components/Carousel";
 import { Marquee } from "@/components/Marquee";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { CLASS_FORMATS, FOUNDERS, JOURNAL_POSTS } from "@/lib/site";
@@ -18,6 +18,10 @@ import heroB from "@/assets/hero-b.jpg";
 import theSpace from "@/assets/the-space.jpg";
 import classDetail from "@/assets/class-detail.jpg";
 import machineDetail from "@/assets/machine-detail.jpg";
+import studioLight from "@/assets/studio-light.jpg";
+import studioCorner from "@/assets/studio-corner.jpg";
+import memberA from "@/assets/member-a.jpg";
+import detailHandle from "@/assets/detail-handle.jpg";
 
 const HERO_SLIDES = [
   {
@@ -96,16 +100,10 @@ const WHY = [
 function Home() {
   return (
     <>
-      {/* Hero — split: auto carousel panel + editorial copy panel, locked to one viewport */}
+      {/* Hero — left copy panel, right auto carousel with arrows, one viewport */}
       <section className="relative flex min-h-svh flex-col border-b border-border bg-background pt-[76px] md:pt-[92px] lg:h-svh lg:overflow-hidden">
-        <div className="grid flex-1 items-stretch lg:grid-cols-[1.05fr_1fr]">
-          <AutoCarousel
-            eager
-            slides={HERO_SLIDES}
-            className="h-[42vh] min-h-[300px] lg:h-full"
-          />
-
-          <div className="flex items-center px-6 py-10 md:px-12 lg:px-16 lg:py-0">
+        <div className="grid flex-1 items-stretch lg:grid-cols-[1fr_1.05fr]">
+          <div className="flex items-center px-6 py-12 md:px-12 lg:order-1 lg:px-16 lg:py-0">
             <div className="w-full max-w-xl">
               <Reveal>
                 <div className="flex items-center gap-4">
@@ -130,7 +128,7 @@ function Home() {
                 </ActionLink>
               </Reveal>
 
-              {/* <Reveal delay={380} className="mt-12">
+              <Reveal delay={380} className="mt-12">
                 <div className="rule-hairline" />
                 <div className="mt-6 flex divide-x divide-border">
                   {HERO_STATS.map((s) => (
@@ -144,11 +142,19 @@ function Home() {
                     </div>
                   ))}
                 </div>
-              </Reveal> */}
+              </Reveal>
             </div>
           </div>
+
+          <AutoCarousel
+            eager
+            showArrows
+            slides={HERO_SLIDES}
+            className="aspect-[4/5] w-full sm:aspect-[16/10] lg:order-2 lg:aspect-auto lg:h-full"
+          />
         </div>
       </section>
+
 
       <Marquee
         items={["Control", "Strength", "Endurance", "Precision", "Tension", "Discipline"]}
@@ -201,6 +207,27 @@ function Home() {
           ))}
         </div>
       </Section>
+
+      {/* Image triptych */}
+      <section className="grid gap-px bg-border sm:grid-cols-3">
+        {[
+          { src: studioLight, alt: "Bright, airy studio floor at LSN Lagree" },
+          { src: memberA, alt: "A member working through a slow repetition on the machine" },
+          { src: detailHandle, alt: "Close detail of the cable handle on a Micro Pro machine" },
+        ].map((img, i) => (
+          <Reveal key={img.src} delay={i * 110} className="relative overflow-hidden">
+            <img
+              src={img.src}
+              alt={img.alt}
+              width={1024}
+              height={1280}
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover object-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.04] sm:aspect-[3/4]"
+            />
+          </Reveal>
+        ))}
+      </section>
+
 
       {/* Classes preview */}
       <Section>
@@ -268,73 +295,71 @@ function Home() {
       </Section>
 
       {/* The space */}
-      <section className="grid lg:grid-cols-2">
-        <Reveal className="order-2 flex items-center bg-sand-light px-6 py-20 md:px-14 lg:order-1 lg:px-20 lg:py-32">
-          <div className="max-w-lg">
-            <Eyebrow>The space</Eyebrow>
-            <h2 className="display-lg mt-5">A studio built for focus.</h2>
-            <p className="lede mt-6">
-              Low light. Considered sound. Clean lines and nothing on the walls that asks for your
-              attention. The room is designed to hold five people and one intention — and nothing
-              else.
-            </p>
-            <div className="mt-10">
-              <ActionLink to="/studio/the-space" variant="outline">
-                See the Studio
-              </ActionLink>
-            </div>
-          </div>
-        </Reveal>
-        <AutoCarousel
-          className="order-1 min-h-[380px] lg:order-2 lg:min-h-[640px]"
-          interval={5200}
-          slides={[
-            {
-              src: theSpace,
-              alt: "The LSN Lagree studio floor with five Micro Pro machines",
-              caption: "Five machines, one floor",
-            },
-            {
-              src: machineDetail,
-              alt: "Detail of a Micro Pro spring and carriage assembly",
-              caption: "Calibrated spring system",
-            },
-            {
-              src: classDetail,
-              alt: "A coach correcting a member's form during a class at LSN Lagree",
-              caption: "Coached by name",
-            },
-          ]}
-        />
-      </section>
+      <SplitCarouselSection
+        eyebrow="The space"
+        title="A studio built for focus."
+        tone="sand"
+        reverse
+        body={
+          <p>
+            Low light. Considered sound. Clean lines and nothing on the walls that asks for your
+            attention. The room is designed to hold five people and one intention — and nothing
+            else.
+          </p>
+        }
+        slides={[
+          {
+            src: theSpace,
+            alt: "The LSN Lagree studio floor with five Micro Pro machines",
+            caption: "Five machines, one floor",
+          },
+          {
+            src: studioLight,
+            alt: "Bright studio floor at LSN Lagree with natural daylight",
+            caption: "Daylight and quiet",
+          },
+          {
+            src: studioCorner,
+            alt: "The reception corner of the LSN Lagree studio",
+            caption: "Considered detail",
+          },
+        ]}
+      >
+        <ActionLink to="/studio/the-space" variant="outline">
+          See the Studio
+        </ActionLink>
+      </SplitCarouselSection>
 
       {/* First timers */}
-      <section className="grid lg:grid-cols-2">
-        <div className="min-h-[380px] lg:min-h-[640px]">
-          <img
-            src={classDetail}
-            alt="A coach correcting a member's form during a Lagree class at LSN"
-            width={1200}
-            height={1504}
-            loading="lazy"
-            className="h-full w-full object-cover"
-          />
-        </div>
-        <Reveal className="flex items-center bg-background px-6 py-20 md:px-14 lg:px-20 lg:py-32">
-          <div className="max-w-lg">
-            <Eyebrow>First timers</Eyebrow>
-            <h2 className="display-lg mt-5">Never done Lagree before?</h2>
-            <p className="lede mt-6">
-              Good. Most people in the room started exactly where you are. Your first class is
-              guided from the first spring to the last count — what to wear, what to expect, and
-              how to survive the first eight minutes.
-            </p>
-            <div className="mt-10">
-              <ActionLink to="/classes/first-class">Start Here</ActionLink>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+      <SplitCarouselSection
+        eyebrow="First timers"
+        title="Never done Lagree before?"
+        body={
+          <p>
+            Good. Most people in the room started exactly where you are. Your first class is guided
+            from the first spring to the last count — what to wear, what to expect, and how to
+            survive the first eight minutes.
+          </p>
+        }
+        slides={[
+          {
+            src: classDetail,
+            alt: "A coach correcting a member's form during a Lagree class at LSN",
+            caption: "Coached by name",
+          },
+          {
+            src: memberA,
+            alt: "A member holding a slow, controlled position on the machine",
+            caption: "Slow and controlled",
+          },
+          {
+            src: detailHandle,
+            alt: "Hands gripping the cable handle of a Micro Pro machine",
+            caption: "Constant tension",
+          },
+        ]}
+      />
+
 
       {/* Journal preview */}
       <Section>
