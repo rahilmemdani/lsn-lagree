@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import {
   Section,
   SectionHead,
@@ -70,32 +72,188 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const WHY = [
+const WHY_ITEMS = [
   {
     n: "01",
-    head: "A method, not a workout.",
-    body: "Lagree is a defined discipline with its own principles, its own equipment and its own progression. We teach it the way it was designed to be taught.",
     label: "The Method",
+    head: "A method, not a workout.",
+    body: "Lagree is a defined discipline with its own principles, equipment and progression. We teach it the way it was designed to be taught.",
+    src: studioLight,
+    alt: "Bright, airy studio floor at LSN Lagree",
+    caption: "01 — Built for focus",
   },
   {
     n: "02",
-    head: "Five Micro Pros.",
-    body: "Our floor is built around five Lagree Micro Pro machines. Spring-loaded, precision-calibrated, and capable of scaling from your first class to your five hundredth.",
     label: "The Machines",
+    head: "Five Micro Pros.",
+    body: "Our floor is built around five Lagree Micro Pro machines. Spring-loaded, precision-calibrated, scaling from class 1 to 500.",
+    src: detailHandle,
+    alt: "Close detail of the cable handle on a Micro Pro machine",
+    caption: "02 — Constant tension",
   },
   {
     n: "03",
-    head: "Five people. One coach.",
-    body: "Every class caps at five. Your form is watched, corrected and progressed by name. Nobody trains at the back of the room here.",
     label: "The Room",
+    head: "Five people. One coach.",
+    body: "Every class caps at five. Your form is watched, corrected and progressed by name. Nobody trains at the back.",
+    src: theSpace,
+    alt: "The LSN Lagree studio floor with five Micro Pro machines",
+    caption: "03 — Five machines, one room",
   },
   {
     n: "04",
-    head: "Trained at the source.",
-    body: "Our team is led by Arpan Kripalani, our Master Trainer and co-founder — one of the few certified to teach the Lagree Method in India.",
     label: "The Coaching",
+    head: "Trained at the source.",
+    body: "Our team is led by Arpan Kripalani, Master Trainer and co-founder — certified to teach Lagree in India.",
+    src: memberA,
+    alt: "A member working through a slow repetition on the machine",
+    caption: "04 — Coached by name",
   },
 ];
+
+function WhySection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % WHY_ITEMS.length);
+    }, 4800);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="relative flex h-svh flex-col justify-between border-b border-border bg-sand-light overflow-hidden lg:grid lg:grid-cols-2 lg:justify-stretch">
+      {/* Left panel / Minimalist luxury editorial index list */}
+      <div className="flex flex-1 flex-col justify-center px-6 py-6 md:px-12 lg:px-16 lg:py-12 overflow-hidden">
+        <div className="w-full max-w-xl mx-auto">
+          <Reveal>
+            <div className="flex items-center gap-3">
+              <span className="h-[1px] w-10 bg-clay/50" />
+              <p className="eyebrow">Why LSN</p>
+            </div>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2 className="display-lg mt-3 md:mt-4 lg:mt-5">
+              Built around five.
+            </h2>
+          </Reveal>
+
+          {/* Minimalist Editorial Accordion Index */}
+          <div className="mt-5 border-t border-border/80 md:mt-8 lg:mt-10">
+            {WHY_ITEMS.map((item, i) => {
+              const isActive = i === activeIndex;
+              return (
+                <button
+                  key={item.n}
+                  type="button"
+                  onClick={() => setActiveIndex(i)}
+                  className={cn(
+                    "group block w-full border-b border-border/70 py-3 md:py-4 text-left transition-all duration-500",
+                    isActive ? "bg-white/40 px-2 sm:px-3" : "hover:bg-white/20",
+                  )}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3 md:gap-4">
+                      <span
+                        className={cn(
+                          "font-display text-xs md:text-sm transition-colors duration-500",
+                          isActive ? "text-clay font-medium" : "text-clay/40 group-hover:text-clay/70",
+                        )}
+                      >
+                        {item.n}
+                      </span>
+                      <h3
+                        className={cn(
+                          "font-display text-base sm:text-lg md:text-xl transition-colors duration-500",
+                          isActive ? "text-ink font-normal" : "text-muted-foreground group-hover:text-ink",
+                        )}
+                      >
+                        {item.head}
+                      </h3>
+                    </div>
+
+                    <span
+                      className={cn(
+                        "text-[0.625rem] md:text-xs uppercase tracking-[0.2em] transition-colors duration-500 shrink-0 ml-2",
+                        isActive ? "text-clay" : "text-muted-foreground/40 group-hover:text-muted-foreground",
+                      )}
+                    >
+                      {item.label}
+                    </span>
+                  </div>
+
+                  {/* Active expanded paragraph */}
+                  <div
+                    className={cn(
+                      "grid transition-all duration-500 ease-in-out",
+                      isActive
+                        ? "grid-rows-[1fr] opacity-100 mt-2 md:mt-3"
+                        : "grid-rows-[0fr] opacity-0 pointer-events-none",
+                    )}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="pl-6 md:pl-8 text-xs md:text-sm font-light leading-relaxed text-muted-foreground max-w-lg">
+                        {item.body}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Right panel / Full height synchronized carousel */}
+      <div className="relative h-44 w-full overflow-hidden bg-sand-light sm:h-56 lg:h-full lg:w-full">
+        {WHY_ITEMS.map((item, i) => (
+          <img
+            key={item.src}
+            src={item.src}
+            alt={item.alt}
+            width={1408}
+            height={1760}
+            loading={i === 0 ? "eager" : "lazy"}
+            className={cn(
+              "absolute inset-0 h-full w-full object-cover object-center transition-all duration-1000 ease-in-out",
+              i === activeIndex
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-105 pointer-events-none",
+            )}
+          />
+        ))}
+
+        {/* Soft edge gradient overlay */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent" />
+
+        {/* Minimalist pill caption & indicator dots */}
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 sm:bottom-6 sm:left-6 sm:right-6">
+          <p className="rounded-full bg-white/20 px-3.5 py-1 text-[0.6rem] uppercase tracking-[0.2em] text-white backdrop-blur-md">
+            {WHY_ITEMS[activeIndex].caption}
+          </p>
+
+          <div className="flex items-center gap-1.5">
+            {WHY_ITEMS.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => setActiveIndex(i)}
+                className={cn(
+                  "h-1 transition-all duration-500 rounded-full",
+                  i === activeIndex ? "w-6 bg-white" : "w-2 bg-white/40 hover:bg-white/70",
+                )}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
 
 function Home() {
   return (
@@ -191,42 +349,10 @@ function Home() {
         </div>
       </Section>
 
-      {/* Why LSN */}
-      <Section tone="sand" className="overflow-hidden">
-        <SectionHead eyebrow="Why LSN" title="Built around five." />
-        <div className="mt-14 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
-          {WHY.map((c, i) => (
-            <Reveal key={c.n} delay={i * 90} className="bg-sand-light p-8 md:p-10">
-              <div className="flex items-baseline justify-between">
-                <span className="eyebrow">{c.label}</span>
-                <span className="font-display text-sm text-clay/50">{c.n}</span>
-              </div>
-              <h3 className="mt-8 font-display text-2xl leading-tight">{c.head}</h3>
-              <p className="mt-4 text-[0.9rem] leading-relaxed text-muted-foreground">{c.body}</p>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+      {/* Why LSN — Synchronized single-frame split section */}
+      <WhySection />
 
-      {/* Image triptych */}
-      <section className="grid gap-px bg-border sm:grid-cols-3">
-        {[
-          { src: studioLight, alt: "Bright, airy studio floor at LSN Lagree" },
-          { src: memberA, alt: "A member working through a slow repetition on the machine" },
-          { src: detailHandle, alt: "Close detail of the cable handle on a Micro Pro machine" },
-        ].map((img, i) => (
-          <Reveal key={img.src} delay={i * 110} className="relative overflow-hidden">
-            <img
-              src={img.src}
-              alt={img.alt}
-              width={1024}
-              height={1280}
-              loading="lazy"
-              className="aspect-[4/5] w-full object-cover object-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.04] sm:aspect-[3/4]"
-            />
-          </Reveal>
-        ))}
-      </section>
+
 
 
       {/* Classes preview */}
