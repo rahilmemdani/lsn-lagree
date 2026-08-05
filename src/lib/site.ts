@@ -1,4 +1,6 @@
 export const BOOKING_URL = "#booking";
+export const INSTAGRAM_URL = "https://www.instagram.com/lsnlagree/";
+
 
 export const STUDIO = {
   name: "LSN Lagree",

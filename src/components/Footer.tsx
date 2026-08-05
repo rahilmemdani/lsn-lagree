@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Youtube, MessageCircle } from "lucide-react";
 import { NewsletterForm } from "@/components/NewsletterForm";
+import { INSTAGRAM_URL } from "@/lib/site";
 import logoBeige from "@/assets/lsn-logo-beige.png.asset.json";
+
 
 const explore = [
   { label: "The Lagree Method", to: "/the-method" },
@@ -86,7 +88,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col gap-6 border-t border-border pt-8 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-5">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="text-ink-soft transition-colors hover:text-clay">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="text-ink-soft transition-colors hover:text-clay">
               <Instagram className="h-4 w-4" strokeWidth={1.3} />
             </a>
             <a href="https://youtube.com" target="_blank" rel="noreferrer noopener" aria-label="YouTube" className="text-ink-soft transition-colors hover:text-clay">
