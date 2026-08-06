@@ -40,8 +40,8 @@ export function Header() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 border-b transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
           scrolled || !isHome
-            ? "border-border bg-background/92 backdrop-blur-xl"
-            : "border-transparent bg-background",
+            ? "border-border/80 bg-[oklch(0.9870_0.0070_82.00/0.96)] backdrop-blur-xl shadow-[0_2px_24px_-4px_oklch(0.52_0.09_52/0.08)]"
+            : "border-transparent bg-[oklch(0.9870_0.0070_82.00)]",
         )}
       >
         <div className="mx-auto flex w-full max-w-[1320px] items-center justify-between gap-6 px-6 py-4 md:px-10 md:py-5 lg:px-16">
@@ -61,10 +61,10 @@ export function Header() {
                 <Link
                   to={item.to}
                   className={cn(
-                    "flex items-center gap-1.5 text-[0.7rem] uppercase tracking-[0.2em] transition-colors duration-300",
-                    overDark ? "text-white/85 hover:text-white" : "text-ink-soft hover:text-clay",
+                    "flex items-center gap-1.5 text-[0.72rem] font-medium uppercase tracking-[0.18em] transition-colors duration-300",
+                    overDark ? "text-white/85 hover:text-white" : "text-ink hover:text-clay",
                   )}
-                  activeProps={{ className: overDark ? "text-white" : "text-clay" }}
+                  activeProps={{ className: overDark ? "text-white" : "text-clay font-semibold" }}
                   activeOptions={{ exact: item.children ? false : true }}
                 >
                   {item.label}
@@ -92,7 +92,7 @@ export function Header() {
               href={BOOKING_URL}
               target="_blank"
               rel="noreferrer noopener"
-              className="hidden bg-clay px-6 py-3.5 text-[0.65rem] uppercase tracking-[0.24em] text-white transition-colors duration-500 hover:bg-clay-deep sm:inline-block"
+              className="hidden bg-clay px-6 py-3.5 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white transition-all duration-500 hover:bg-clay-deep hover:shadow-[0_8px_24px_-8px_oklch(0.42_0.078_50/0.45)] sm:inline-block"
             >
               Book a Class
             </a>

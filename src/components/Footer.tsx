@@ -26,7 +26,7 @@ const studio = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-sand-light pb-24 pt-20 text-ink sm:pb-16 md:pt-28">
+    <footer className="border-t border-border bg-sand pb-24 pt-20 text-ink sm:pb-16 md:pt-28">
       <div className="mx-auto w-full max-w-[1320px] px-6 md:px-10 lg:px-16">
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-12">
           <div className="col-span-2 lg:col-span-3">
@@ -98,7 +98,7 @@ export function Footer() {
               <MessageCircle className="h-4 w-4" strokeWidth={1.3} />
             </a>
           </div>
-          <p className="text-xs tracking-wide text-muted-foreground">
+          <p className="text-xs font-medium tracking-wide text-muted-foreground">
             © 2026 LSN Sculpt LLP. All rights reserved.
           </p>
           <ul className="flex flex-wrap gap-6 text-xs text-muted-foreground">

@@ -4,7 +4,6 @@ import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Section,
-  SectionHead,
   Eyebrow,
   ActionLink,
   BookButton,
@@ -252,16 +251,15 @@ function WhySection() {
   );
 }
 
-
-
-
 function Home() {
   return (
     <>
       {/* Hero — left copy panel, right auto carousel with arrows, one viewport */}
       <section className="relative flex min-h-svh flex-col border-b border-border bg-background pt-[76px] md:pt-[92px] lg:h-svh lg:overflow-hidden">
+        {/* Decorative warm gradient wash behind copy */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-sand/30 via-transparent to-transparent hidden lg:block" />
         <div className="grid flex-1 items-stretch lg:grid-cols-[1fr_1.05fr]">
-          <div className="flex items-center px-6 py-12 md:px-12 lg:order-1 lg:px-16 lg:py-0">
+          <div className="relative flex items-center px-6 py-12 md:px-12 lg:order-1 lg:px-16 lg:py-0">
             <div className="w-full max-w-xl">
               <Reveal>
                 <div className="flex items-center gap-4">
@@ -270,12 +268,12 @@ function Home() {
                 </div>
               </Reveal>
               <Reveal delay={110}>
-                <h1 className="mt-6 font-display text-[clamp(2.25rem,4.4vw,4.5rem)] font-normal leading-[0.98] tracking-[-0.02em] text-ink">
+                <h1 className="mt-6 font-display text-[clamp(2.25rem,4.4vw,4.5rem)] font-semibold leading-[0.96] tracking-[-0.028em] text-ink">
                   India&rsquo;s first Lagree studio.
                 </h1>
               </Reveal>
               <Reveal delay={220}>
-                <p className="lede mt-6 max-w-md">
+                <p className="lede mt-6 max-w-md text-ink-soft">
                   Five machines. Fifty minutes. One method that changes how you train.
                 </p>
               </Reveal>
@@ -291,10 +289,10 @@ function Home() {
                 <div className="mt-6 flex divide-x divide-border">
                   {HERO_STATS.map((s) => (
                     <div key={s.label} className="flex-1 px-6 first:pl-0 last:pr-0 md:px-8">
-                      <p className="font-display text-3xl tabular-nums text-clay md:text-4xl">
+                      <p className="font-display text-3xl tabular-nums text-clay md:text-4xl font-medium">
                         {s.value}
                       </p>
-                      <p className="mt-2 text-[0.6rem] uppercase tracking-[0.24em] text-muted-foreground">
+                      <p className="mt-2 text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-clay/60">
                         {s.label}
                       </p>
                     </div>
@@ -313,41 +311,45 @@ function Home() {
         </div>
       </section>
 
-
       <Marquee
         items={["Control", "Strength", "Endurance", "Precision", "Tension", "Discipline"]}
       />
 
 
       {/* One-line explainer */}
-      <Section>
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
-          <Reveal className="lg:col-span-5">
-            <Eyebrow>The premise</Eyebrow>
-            <h2 className="display-lg mt-5">
-              High intensity.
-              <br />
-              Zero impact.
-            </h2>
-          </Reveal>
-          <Reveal delay={140} className="space-y-6 lg:col-span-7">
-            <p className="lede">
-              Lagree is a strength method built on slow, controlled movement under constant
-              tension. No running. No jumping. No pounding your joints. Just fifty minutes of
-              continuous, deliberate resistance that works your muscles to the point of change —
-              and leaves the rest of you intact.
-            </p>
-            <p className="text-lg font-normal text-ink">
-              It is not a class you drift through. It is a method you learn.
-            </p>
-            <div className="pt-4">
-              <ActionLink to="/the-method" variant="outline">
-                Explore the Method
-              </ActionLink>
-            </div>
-          </Reveal>
+      <section className="border-b border-border bg-background py-20 md:py-28 lg:py-36">
+        <div className="mx-auto w-full max-w-[1320px] px-6 md:px-10 lg:px-16">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+            <Reveal className="lg:col-span-5">
+              <Eyebrow>The premise</Eyebrow>
+              <h2 className="display-lg mt-5">
+                High intensity.
+                <br />
+                Zero impact.
+              </h2>
+            </Reveal>
+            <Reveal delay={140} className="space-y-8 lg:col-span-7">
+              <p className="lede">
+                Lagree is a strength method built on slow, controlled movement under constant
+                tension. No running. No jumping. No pounding your joints. Just fifty minutes of
+                continuous, deliberate resistance that works your muscles to the point of change —
+                and leaves the rest of you intact.
+              </p>
+              {/* Pull-quote style strong statement */}
+              <blockquote className="border-l-[3px] border-clay py-2 pl-6">
+                <p className="font-display text-xl text-ink md:text-2xl">
+                  &ldquo;It is not a class you drift through. It is a method you learn.&rdquo;
+                </p>
+              </blockquote>
+              <div>
+                <ActionLink to="/the-method" variant="outline">
+                  Explore the Method
+                </ActionLink>
+              </div>
+            </Reveal>
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* Why LSN — Synchronized single-frame split section */}
       <WhySection />
@@ -355,70 +357,129 @@ function Home() {
 
 
 
-      {/* Classes preview */}
-      <Section>
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <SectionHead
-            eyebrow="Classes"
-            title="Find your format."
-            lede="Every class runs fifty minutes on the machine. What changes is the emphasis, the tempo and how hard we push the tension."
-            className="md:max-w-2xl"
-          />
-        </div>
-        <div className="mt-14 grid gap-px bg-border md:grid-cols-3">
-          {CLASS_FORMATS.slice(0, 3).map((c, i) => (
-            <Reveal key={c.name} delay={i * 100} className="bg-background p-8 md:p-10">
-              <h3 className="font-display text-3xl">{c.name}</h3>
-              <p className="mt-3 text-xs uppercase tracking-[0.2em] text-clay">{c.level}</p>
-              <p className="mt-6 text-[0.9rem] leading-relaxed text-muted-foreground">
-                {c.description}
+      {/* Classes preview — editorial numbered cards */}
+      <section className="border-b border-border bg-sand-light py-20 md:py-28 lg:py-36">
+        <div className="mx-auto w-full max-w-[1320px] px-6 md:px-10 lg:px-16">
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <Reveal className="max-w-2xl">
+              <Eyebrow>Classes</Eyebrow>
+              <h2 className="display-lg mt-5">Find your format.</h2>
+              <p className="lede mt-5">
+                Every class runs fifty minutes on the machine. What changes is the emphasis, the tempo and how hard we push the tension.
               </p>
             </Reveal>
-          ))}
-        </div>
-        <Reveal className="mt-12">
-          <ActionLink to="/classes" variant="outline">
-            See All Classes
-          </ActionLink>
-        </Reveal>
-      </Section>
+          </div>
 
-      {/* Founders strip */}
-      <Section tone="ink">
-        <div className="grid gap-12 lg:grid-cols-12">
-          <Reveal className="lg:col-span-5">
-            <Eyebrow>The founders</Eyebrow>
-            <h2 className="display-lg mt-5">Four people. One obsession.</h2>
-          </Reveal>
-          <Reveal delay={140} className="lg:col-span-7 lg:pt-4">
-            <p className="lede">
-              LSN was built by a trainer, a strategist, an investor and a voice — each of whom
-              found Lagree separately, and none of whom could find it in India.
-            </p>
+          {/* Editorial class cards with large number + accent left border on hover */}
+          <div className="mt-14 divide-y divide-border border-t border-border">
+            {CLASS_FORMATS.slice(0, 3).map((c, i) => (
+              <Reveal key={c.name} delay={i * 80}>
+                <div className="group grid gap-4 py-8 transition-all duration-500 hover:bg-background/80 md:grid-cols-[4rem_1fr_2fr_auto] md:items-center md:gap-10 md:py-10 lg:gap-16 lg:py-12 px-0 hover:px-4 md:hover:px-6">
+                  {/* Index number */}
+                  <span className="font-display text-4xl tabular-nums text-clay/25 group-hover:text-clay/50 transition-colors duration-500 leading-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Name + level */}
+                  <div>
+                    <h3 className="font-display text-2xl md:text-3xl text-ink group-hover:text-clay transition-colors duration-400">{c.name}</h3>
+                    <p className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-clay/60">{c.level}</p>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-[0.9rem] leading-relaxed text-ink-soft lg:max-w-prose">
+                    {c.description}
+                  </p>
+
+                  {/* Arrow */}
+                  <ArrowUpRight
+                    className="hidden md:block h-5 w-5 text-clay shrink-0 opacity-0 transition-all duration-400 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={1.5}
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-10">
+            <ActionLink to="/classes" variant="outline">
+              See All Classes
+            </ActionLink>
           </Reveal>
         </div>
-        <div className="mt-16 grid grid-cols-2 gap-px bg-border lg:grid-cols-4">
-          {FOUNDERS.map((f, i) => (
-            <Reveal key={f.name} delay={i * 90} className="bg-background p-6 md:p-8">
-              <div className="flex aspect-[3/4] items-center justify-center bg-sand/50 transition-colors duration-700 hover:bg-clay/20">
-                <span className="font-display text-4xl text-clay/70">{f.initials}</span>
-              </div>
-              <h3 className="mt-5 font-display text-xl">{f.name}</h3>
-              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                {f.title}
+      </section>
+
+      {/* Founders — editorial grid on warm white */}
+      <section className="border-b border-border bg-background py-20 md:py-28 lg:py-36">
+        <div className="mx-auto w-full max-w-[1320px] px-6 md:px-10 lg:px-16">
+          {/* Header row */}
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <Reveal className="lg:col-span-6">
+              <Eyebrow>The founders</Eyebrow>
+              <h2 className="display-lg mt-5">Four people.{"\u00a0"}One obsession.</h2>
+            </Reveal>
+            <Reveal delay={140} className="lg:col-span-5 lg:col-start-8">
+              <p className="lede border-l-2 border-clay/30 pl-5 text-ink-soft">
+                LSN was built by a trainer, a strategist, an investor and a voice — each of whom
+                found Lagree separately, and none of whom could find it in India.
               </p>
             </Reveal>
-          ))}
+          </div>
+
+          {/* Hairline divider */}
+          <div className="mt-14 h-px w-full bg-gradient-to-r from-clay/30 via-border to-transparent" />
+
+          {/* Founder cards — staggered Pinterest grid */}
+          <div className="mt-0 grid grid-cols-2 lg:grid-cols-4">
+            {FOUNDERS.map((f, i) => (
+              <Reveal
+                key={f.name}
+                delay={i * 120}
+                className={"group relative border-r border-b border-border last:border-r-0 p-6 md:p-8 lg:p-10 transition-all duration-500 hover:bg-sand-light"}
+              >
+                {/* Number index */}
+                {/* <p className="font-display text-[4rem] leading-none text-clay/10 select-none font-medium mb-4 lg:text-[5rem]">
+                  {String(i + 1).padStart(2, "0")}
+                </p> */}
+
+                {/* Initials portrait — tall card with clay hover */}
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-sand transition-all duration-700 group-hover:bg-clay/15">
+                  {/* Decorative corner lines */}
+                  <span className="absolute left-2 top-2 h-6 w-6 border-l border-t border-clay/30 transition-all duration-500 group-hover:border-clay/60" />
+                  <span className="absolute right-2 bottom-2 h-6 w-6 border-r border-b border-clay/30 transition-all duration-500 group-hover:border-clay/60" />
+                  {/* Large initials */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                    <span className="font-display text-5xl md:text-6xl text-clay transition-all duration-500 group-hover:scale-105">
+                      {f.initials}
+                    </span>
+                    <span className="h-px w-8 bg-clay/30 transition-all duration-500 group-hover:w-12 group-hover:bg-clay/60" />
+                  </div>
+                </div>
+
+                {/* Text below card */}
+                <div className="mt-5">
+                  <h3 className="font-display text-xl text-ink">{f.name}</h3>
+                  <p className="mt-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-clay/70">
+                    {f.title}
+                  </p>
+                </div>
+
+                {/* Hover arrow */}
+                <ArrowUpRight className="absolute right-6 top-6 h-4 w-4 text-clay opacity-0 transition-all duration-400 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.5} />
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-10">
+            <Link
+              to="/studio/founders"
+              className="link-underline inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-clay hover:text-clay-deep"
+            >
+              Meet the Founders <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.4} />
+            </Link>
+          </Reveal>
         </div>
-        <Reveal className="mt-12">
-          <Link
-            to="/studio/founders"
-            className="link-underline inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.24em] text-clay"
-          >
-            Meet the Founders <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.4} />
-          </Link>
-        </Reveal>
-      </Section>
+      </section>
 
       {/* The space */}
       <SplitCarouselSection
@@ -487,40 +548,71 @@ function Home() {
       />
 
 
-      {/* Journal preview */}
-      <Section>
-        <SectionHead eyebrow="Journal" title="From the Journal" />
-        <div className="mt-14 grid gap-10 md:grid-cols-3">
-          {JOURNAL_POSTS.map((p, i) => (
-            <Reveal key={p.slug} delay={i * 100} as="article">
-              <Link to="/community/journal" className="group block">
-                <div className="aspect-[4/3] overflow-hidden bg-sand-light">
-                  <img
-                    src={machineDetail}
-                    alt=""
-                    width={1200}
-                    height={1504}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                  />
-                </div>
-                <p className="eyebrow mt-6">{p.category}</p>
-                <h3 className="mt-3 font-display text-2xl leading-snug transition-colors group-hover:text-clay">
-                  {p.title}
-                </h3>
-                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  {p.readTime}
-                </p>
-              </Link>
+      {/* Journal — editorial card grid */}
+      <section className="border-b border-border bg-sand-light py-20 md:py-28 lg:py-36">
+        <div className="mx-auto w-full max-w-[1320px] px-6 md:px-10 lg:px-16">
+          <div className="flex items-end justify-between gap-6">
+            <Reveal>
+              <Eyebrow>Journal</Eyebrow>
+              <h2 className="display-lg mt-4">From the Journal</h2>
             </Reveal>
-          ))}
+            <Reveal delay={100}>
+              <ActionLink to="/community/journal" variant="outline" className="hidden sm:inline-flex">
+                Read All
+              </ActionLink>
+            </Reveal>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {JOURNAL_POSTS.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 100} as="article">
+                <Link to="/community/journal" className="group block">
+                  {/* Image with rich overlay on hover */}
+                  <div className="relative aspect-[4/3] overflow-hidden bg-sand">
+                    <img
+                      src={machineDetail}
+                      alt=""
+                      width={1200}
+                      height={1504}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                    />
+                    {/* Category overlay badge */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-clay backdrop-blur-sm">
+                      {p.category}
+                    </span>
+                  </div>
+
+                  {/* Card body */}
+                  <div className="mt-5 border-b border-border/60 pb-6">
+                    <h3 className="font-display text-xl leading-snug text-ink transition-colors group-hover:text-clay md:text-2xl">
+                      {p.title}
+                    </h3>
+                    <p className="mt-3 line-clamp-2 text-[0.85rem] leading-relaxed text-ink-soft">
+                      {p.excerpt}
+                    </p>
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-clay/60">
+                        {p.readTime}
+                      </span>
+                      <span className="flex items-center gap-1 text-[0.65rem] font-medium uppercase tracking-[0.16em] text-clay opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:gap-2">
+                        Read <ArrowUpRight className="h-3 w-3" strokeWidth={1.5} />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-10 sm:hidden">
+            <ActionLink to="/community/journal" variant="outline">
+              Read the Journal
+            </ActionLink>
+          </Reveal>
         </div>
-        <Reveal className="mt-12">
-          <ActionLink to="/community/journal" variant="outline">
-            Read the Journal
-          </ActionLink>
-        </Reveal>
-      </Section>
+      </section>
 
       {/* Newsletter */}
       <Section tone="sand">

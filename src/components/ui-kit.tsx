@@ -33,7 +33,7 @@ export function Section({
     white: "bg-background text-foreground",
     sand: "bg-sand-light text-foreground",
     clay: "bg-sand text-ink",
-    ink: "bg-sand-light text-ink",
+    ink: "bg-[oklch(0.2100_0.0300_52.00)] text-[oklch(0.9600_0.0160_77.00)]",
   } as const;
   return (
     <section id={id} className={cn("py-20 md:py-28 lg:py-36", tones[tone], className)}>
@@ -87,7 +87,7 @@ const buttonVariants = {
   solid:
     "bg-clay text-white shadow-[0_8px_24px_-12px_color-mix(in_oklab,var(--clay)_65%,transparent)] hover:bg-clay-deep hover:shadow-[0_14px_34px_-14px_color-mix(in_oklab,var(--clay)_70%,transparent)]",
   outline:
-    "border border-clay/30 bg-white/60 text-clay backdrop-blur-sm hover:border-clay/60 hover:bg-clay hover:text-white",
+    "border border-clay/40 bg-white/40 text-clay backdrop-blur-sm hover:border-clay hover:bg-clay hover:text-white",
   ghost: "text-foreground hover:text-clay",
   light: "bg-sand-light text-ink shadow-sm hover:bg-white",
 } as const;
@@ -134,7 +134,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <header className="border-b border-border bg-sand-light pt-40 pb-16 md:pt-52 md:pb-24">
+    <header className="border-b border-border bg-sand pt-40 pb-16 md:pt-52 md:pb-24">
       <Container>
         <Reveal className="max-w-4xl">
           {eyebrow ? <Eyebrow className="mb-6">{eyebrow}</Eyebrow> : null}
